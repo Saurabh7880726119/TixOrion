@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technologies – Tixorion Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #tech { background: var(--dark2); }
+    .tech-category { margin-bottom: 60px; }
+    .tech-category-title { font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .tech-pill { background: var(--card); border: 1px solid var(--border); padding: 12px 22px; border-radius: 50px; font-size: .88rem; font-weight: 500; color: var(--muted); transition: all .3s; cursor: default; letter-spacing: .5px; }
+    .tech-pill:hover { border-color: var(--blue); color: var(--blue); background: rgba(59,158,255,.07); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="technologies.html" class="active">Technologies</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="section-label">Our Stack</div>
+    <h1>Technologies We <span>Master</span></h1>
+    <p>We leverage the best-in-class modern technologies to build scalable, performant, and maintainable solutions.</p>
+  </div>
+
+  <section id="tech">
+    <div class="tech-category">
+      <div class="tech-category-title">🌐 Frontend Development</div>
+      <div class="tech-grid">
+        <span class="tech-pill">React.js</span><span class="tech-pill">Next.js</span><span class="tech-pill">Vue.js</span><span class="tech-pill">Angular</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">⚙️ Backend Development</div>
+      <div class="tech-grid">
+        <span class="tech-pill">Node.js</span><span class="tech-pill">Python</span><span class="tech-pill">Django</span><span class="tech-pill">FastAPI</span><span class="tech-pill">Java Spring</span><span class="tech-pill">.NET Core</span><span class="tech-pill">GraphQL</span><span class="tech-pill">REST APIs</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">📱 Mobile Development</div>
+      <div class="tech-grid">
+        <span class="tech-pill">Flutter</span><span class="tech-pill">React Native</span><span class="tech-pill">Swift</span><span class="tech-pill">Kotlin</span><span class="tech-pill">iOS</span><span class="tech-pill">Android</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">🤖 AI & Machine Learning</div>
+      <div class="tech-grid">
+        <span class="tech-pill">TensorFlow</span><span class="tech-pill">PyTorch</span><span class="tech-pill">Scikit-learn</span><span class="tech-pill">OpenAI</span><span class="tech-pill">Hugging Face</span><span class="tech-pill">LangChain</span><span class="tech-pill">Computer Vision</span><span class="tech-pill">NLP</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">☁️ Cloud & DevOps</div>
+      <div class="tech-grid">
+        <span class="tech-pill">AWS</span><span class="tech-pill">Azure</span><span class="tech-pill">Google Cloud</span><span class="tech-pill">Docker</span><span class="tech-pill">Kubernetes</span><span class="tech-pill">CI/CD</span><span class="tech-pill">Terraform</span><span class="tech-pill">Jenkins</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">🗄️ Databases</div>
+      <div class="tech-grid">
+        <span class="tech-pill">PostgreSQL</span><span class="tech-pill">MongoDB</span><span class="tech-pill">Redis</span><span class="tech-pill">Elasticsearch</span><span class="tech-pill">MySQL</span><span class="tech-pill">Firebase</span><span class="tech-pill">Supabase</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-title">🔗 Emerging Technologies</div>
+      <div class="tech-grid">
+        <span class="tech-pill">Blockchain</span><span class="tech-pill">Web3</span><span class="tech-pill">Smart Contracts</span><span class="tech-pill">IoT</span><span class="tech-pill">AR/VR</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
+    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Not Sure What <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Tech You Need?</span></h2>
+    <p style="color:var(--muted); margin-bottom:32px;">Our experts will recommend the perfect stack for your project.</p>
+    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Talk to an Expert →</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"><p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p><div class="social-links" style="margin-top:20px;"><a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
+  </footer>
+
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.tech-pill').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='all .4s ease'; observer.observe(el); });</script>
+</body>
+</html>

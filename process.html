@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Process – Tixorion Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #process { background: var(--dark); }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 16px; }
+    .process-step { text-align: center; padding: 40px 28px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; transition: all .3s; position: relative; }
+    .process-step:hover { border-color: rgba(124,58,237,.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(124,58,237,.1); }
+    .step-num { font-family: 'Orbitron', monospace; font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; display: block; }
+    .process-step h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
+    .process-step p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
+    .process-step .step-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+    #process-detail { background: var(--dark2); }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
+    .detail-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .detail-card ul li { color: var(--muted); font-size: .9rem; line-height: 1.6; padding-left: 20px; position: relative; }
+    .detail-card ul li::before { content: '▸'; color: var(--blue); position: absolute; left: 0; }
+    @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="technologies.html">Technologies</a></li>
+      <li><a href="process.html" class="active">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="section-label">How We Work</div>
+    <h1>Our <span>Development Process</span></h1>
+    <p>A proven, transparent methodology that ensures on-time delivery and exceeds expectations at every milestone.</p>
+  </div>
+
+  <section id="process">
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-icon">🔍</span>
+        <span class="step-num">01</span>
+        <h4>Discovery & Planning</h4>
+        <p>Understanding your goals, audience, and requirements through detailed workshops and technical analysis. We define scope, timeline, and success metrics upfront.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-icon">🎨</span>
+        <span class="step-num">02</span>
+        <h4>Design & Prototype</h4>
+        <p>Creating wireframes, UI designs, and interactive prototypes for validation before development begins. Client feedback is incorporated at every stage.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-icon">💻</span>
+        <span class="step-num">03</span>
+        <h4>Development</h4>
+        <p>Agile sprints with daily standups, code reviews, and continuous integration for quality assurance. Full transparency throughout the build process.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-icon">🧪</span>
+        <span class="step-num">04</span>
+        <h4>Testing & QA</h4>
+        <p>Rigorous unit, integration, and user acceptance testing to ensure a bug-free, robust product. Performance and security testing included.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-icon">🚀</span>
+        <span class="step-num">05</span>
+        <h4>Deployment</h4>
+        <p>Smooth CI/CD pipeline deployment with zero-downtime releases and real-time monitoring setup. We handle everything from staging to production.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-icon">📈</span>
+        <span class="step-num">06</span>
+        <h4>Support & Growth</h4>
+        <p>Post-launch maintenance, performance monitoring, and iterative improvements to grow with your business. Long-term partnership approach.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process-detail">
+    <div class="section-header">
+      <div class="section-label">Deep Dive</div>
+      <h2 class="section-title">What Makes Our Process <span>Different</span></h2>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>⚡ Agile Methodology</h3>
+        <ul>
+          <li>2-week sprint cycles with clear deliverables</li>
+          <li>Daily standup meetings for progress tracking</li>
+          <li>Sprint retrospectives for continuous improvement</li>
+          <li>Flexible scope management as needs evolve</li>
+          <li>Regular client demos for feedback incorporation</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>🔒 Quality Assurance</h3>
+        <ul>
+          <li>Automated unit and integration test suites</li>
+          <li>Manual QA testing by dedicated testers</li>
+          <li>Performance load testing on all key flows</li>
+          <li>Security vulnerability scanning before launch</li>
+          <li>Cross-browser and cross-device compatibility checks</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>📊 Transparent Reporting</h3>
+        <ul>
+          <li>Real-time project dashboard access for clients</li>
+          <li>Weekly progress reports and milestone updates</li>
+          <li>Dedicated Slack/Teams channel for communication</li>
+          <li>Issue tracking with transparent resolution timelines</li>
+          <li>Monthly strategy reviews for long-term projects</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>🛡️ Security First</h3>
+        <ul>
+          <li>OWASP security guidelines followed throughout</li>
+          <li>Data encryption at rest and in transit</li>
+          <li>Role-based access control implemented by default</li>
+          <li>Penetration testing before production launch</li>
+          <li>GDPR and compliance considerations built in</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
+    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Ready to <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Start Your Project?</span></h2>
+    <p style="color:var(--muted); margin-bottom:32px;">Let's kick off with a free discovery call to understand your needs.</p>
+    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Book a Free Consultation →</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"><p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p><div class="social-links" style="margin-top:20px;"><a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
+  </footer>
+
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.process-step, .detail-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='all .5s ease'; observer.observe(el); });</script>
+</body>
+</html>

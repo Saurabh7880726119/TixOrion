@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team – Tixorion Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #team { background: var(--dark2); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .team-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .4s; text-align: center; }
+    .team-card:hover { border-color: rgba(59,158,255,.4); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59,158,255,.12); }
+    .team-img-wrap { position: relative; overflow: hidden; height: 240px; }
+    .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; filter: grayscale(20%); }
+    .team-card:hover .team-img-wrap img { transform: scale(1.07); filter: grayscale(0%); }
+    .team-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,7,15,.85) 0%, transparent 55%); }
+    .team-social { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; opacity: 0; transition: opacity .3s; }
+    .team-card:hover .team-social { opacity: 1; }
+    .team-social a { width: 30px; height: 30px; border-radius: 6px; background: rgba(59,158,255,.2); border: 1px solid rgba(59,158,255,.4); display: flex; align-items: center; justify-content: center; color: var(--blue); text-decoration: none; font-size: .75rem; transition: background .2s; }
+    .team-social a:hover { background: rgba(59,158,255,.4); }
+    .team-info { padding: 20px 18px 24px; }
+    .team-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 5px; }
+    .team-designation { font-size: .8rem; color: var(--blue); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 10px; }
+    .team-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="technologies.html">Technologies</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="section-label">The People Behind</div>
+    <h1>Meet Our <span>Expert Team</span></h1>
+    <p>A passionate group of engineers, designers, and strategists working together to deliver extraordinary digital solutions.</p>
+  </div>
+
+  <section id="team">
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/nnnnnnnn.jpeg" alt="Neha Shakya"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Neha Shakya</div><div class="team-designation">Co-Founder & Chief Technology Officer (CTO)</div><div class="team-desc">Technology strategist leading scalable systems, AI platforms and advanced product development.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/ooooo.jpeg" alt="Saurabh Kushwaha"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Saurabh Kushwaha</div><div class="team-designation">Dot Net Developer</div><div class="team-desc">Visionary leader driving company strategy, innovation and global digital transformation initiatives.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/rajkumarimage.png" alt="Rajkumar"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Rajkumar</div><div class="team-designation">Mobile Developer</div><div class="team-desc">Flutter & React Native specialist delivering seamless cross-platform mobile apps.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/pankajimage.jpeg" alt="Pankaj"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Pankaj</div><div class="team-designation">Software Engineer</div><div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/akashimage.png" alt="Akash"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Akash</div><div class="team-designation">AI/ML Engineer</div><div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/shaliniimage.png" alt="Shalini"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Shalini</div><div class="team-designation">Head of Design</div><div class="team-desc">Award-winning UI/UX designer crafting intuitive, user-centered digital experiences.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/prashantimage.png" alt="Prashant"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Prashant</div><div class="team-designation">Dot Net Developer</div><div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/abhiimage.jpeg" alt="Abhishek Rawat"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Abhishek Rawat</div><div class="team-designation">Graphic Designer</div><div class="team-desc">Creative graphic designer specializing in branding, logo design, and visual storytelling to enhance brand identity.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/gauravnewimage.png" alt="Gaurav Kushwaha"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Gaurav Kushwaha</div><div class="team-designation">Digital Marketing Manager</div><div class="team-desc">Specialist in SEO, social media marketing and digital growth strategies helping brands scale online.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/kalpeshimage.png" alt="Kalpesh"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Kalpesh</div><div class="team-designation">DevOps Engineer</div><div class="team-desc">Cloud infrastructure expert managing CI/CD pipelines on AWS, Azure & GCP.</div></div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap"><img src="image/shivamimage.png" alt="Shivam Prabhakar"><div class="team-img-overlay"></div><div class="team-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">@</a></div></div>
+        <div class="team-info"><div class="team-name">Shivam Prabhakar</div><div class="team-designation">Project Manager</div><div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
+    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Want to <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Join Our Team?</span></h2>
+    <p style="color:var(--muted); margin-bottom:32px;">We're always looking for talented people to join our growing team.</p>
+    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Get in Touch →</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"><p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p><div class="social-links" style="margin-top:20px;"><a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
+  </footer>
+
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.team-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='all .5s ease'; observer.observe(el); });</script>
+</body>
+</html>
