@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - ExamPro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="assets/img/logo.png" rel="icon">
+
+<style>
+/* ===== Policy page (sirf is page ke liye) ===== */
+.pp { --brand:#ee4d1f; --brand-2:#ff8a5c; --blue:#2f6bff; --navy:#12203f; --muted:#5d6a85; font-family:'Poppins',sans-serif; color:var(--navy); }
+.pp .wrap { width: min(1160px, 92%); margin: 0 auto; }
+
+.pp-banner { padding: 80px 0 70px; text-align:center; color:#fff; background: linear-gradient(135deg,#0f1b4d,#1c3fd1 60%,#2f6bff); position:relative; overflow:hidden; }
+.pp-banner::after { content:""; position:absolute; width:340px; height:340px; right:-90px; top:-150px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.45),transparent 70%); }
+.pp-banner .wrap { position:relative; z-index:1; }
+.pp-banner h1 { margin:0 0 12px; font-size:44px; font-weight:800; }
+.pp-banner p { margin:0 0 16px; color:rgba(255,255,255,.85); }
+.pp-crumb { font-size:14px; color:rgba(255,255,255,.8); }
+.pp-crumb a { color:#fff; text-decoration:none; font-weight:600; }
+
+.pp-body { padding:70px 0 90px; }
+.pp-grid { display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:start; }
+
+/* Contents sidebar */
+.pp-toc { position:sticky; top:100px; padding:24px 22px; background:#f7f9ff; border:1px solid #e8ecf4; border-radius:18px; }
+.pp-toc h4 { margin:0 0 12px; font-size:16px; }
+.pp-toc ol { margin:0; padding-left:20px; display:grid; gap:8px; font-size:14px; }
+.pp-toc a { color:var(--muted); text-decoration:none; }
+.pp-toc a:hover { color:var(--brand); }
+
+/* Content */
+.pp-meta { margin:0 0 30px; padding:16px 20px; font-size:14.5px; color:var(--muted); background:#fff7f3; border-left:4px solid var(--brand); border-radius:0 12px 12px 0; }
+.pp-content section { margin-bottom:38px; scroll-margin-top:100px; }
+.pp-content h2 { margin:0 0 12px; font-size:24px; font-weight:700; }
+.pp-content h3 { margin:20px 0 8px; font-size:17px; }
+.pp-content p, .pp-content li { font-size:15.5px; line-height:1.85; color:var(--muted); }
+.pp-content p { margin:0 0 12px; }
+.pp-content ul { margin:0 0 12px; padding-left:22px; }
+.pp-content li { margin-bottom:6px; }
+.pp-content a { color:var(--blue); }
+.pp-content strong { color:var(--navy); font-weight:600; }
+
+.pp-contact { padding:24px 26px; background:#f7f9ff; border:1px solid #e8ecf4; border-radius:16px; }
+.pp-contact p { margin:0 0 6px; }
+
+@media (max-width:992px) {
+  .pp-grid { grid-template-columns:1fr; gap:30px; }
+  .pp-toc { position:static; }
+}
+@media (max-width:560px) {
+  .pp-banner h1 { font-size:32px; }
+  .pp-content h2 { font-size:21px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><a href="index.html"><img src="assets/img/logo.png" alt="ExamPro Logo" class="logo-img"></a></div>
+    <nav class="links" id="navLinks">
+       <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn btn-primary nav-cta nav-cta-mobile">Schedule a Demo <span class="btn-arrow">→</span></button>
+    </nav>
+    <button class="btn btn-primary nav-cta nav-cta-desktop">Schedule a Demo <span class="btn-arrow">→</span></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="pp">
+
+  <section class="pp-banner">
+    <div class="wrap">
+      <h1>Privacy Policy</h1>
+      <p>How ExamPro collects, uses and protects your information.</p>
+      <div class="pp-crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Privacy Policy</div>
+    </div>
+  </section>
+
+  <div class="pp-body">
+    <div class="wrap pp-grid">
+
+      <aside class="pp-toc">
+        <h4>Contents</h4>
+        <ol>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#collect">Information we collect</a></li>
+          <li><a href="#use">How we use information</a></li>
+          <li><a href="#proctor">Proctoring and exam data</a></li>
+          <li><a href="#share">Sharing of information</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#security">Data security</a></li>
+          <li><a href="#retention">Data retention</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#children">Students and minors</a></li>
+          <li><a href="#links">Third-party links</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </aside>
+
+      <article class="pp-content">
+        <div class="pp-meta"><strong>Last updated:</strong> October 9, 2026</div>
+
+        <section id="intro">
+          <h2>1. Introduction</h2>
+          <p>Welcome to ExamPro. We provide an online examination platform used by schools, colleges, coaching institutes and organizations. This Privacy Policy explains what information we collect, why we collect it, how we use and protect it, and the choices you have.</p>
+          <p>By using our website, platform or services, you agree to the practices described here. If you do not agree, please do not use our services.</p>
+          <p>In this policy, "ExamPro", "we", "us" and "our" mean the company that operates this platform. "You" means any visitor, institution, administrator, teacher, student or candidate who uses our services.</p>
+        </section>
+
+        <section id="collect">
+          <h2>2. Information we collect</h2>
+          <h3>Information you give us</h3>
+          <ul>
+            <li><strong>Contact details:</strong> name, phone number, email address and organisation name when you fill in a demo or contact form.</li>
+            <li><strong>Account details:</strong> login credentials, role (admin, institute, teacher, student) and profile details created by you or your institution.</li>
+            <li><strong>Exam content:</strong> questions, answers, scores, results and reports created or submitted on the platform.</li>
+            <li><strong>Messages:</strong> anything you send us through email, forms, WhatsApp or support requests.</li>
+          </ul>
+          <h3>Information collected automatically</h3>
+          <ul>
+            <li>Device and browser type, operating system, IP address and screen size.</li>
+            <li>Pages visited, time spent, login times and actions taken on the platform.</li>
+            <li>Cookies and similar technologies (see the Cookies section).</li>
+          </ul>
+          <h3>Information from institutions</h3>
+          <p>When your school, college, institute or employer registers you on ExamPro, they may share your name, roll number, class, batch, email or phone number with us so that you can take exams.</p>
+        </section>
+
+        <section id="use">
+          <h2>3. How we use information</h2>
+          <ul>
+            <li>To create accounts and provide, operate and maintain the exam platform.</li>
+            <li>To conduct exams, evaluate answers and generate results, reports and analytics.</li>
+            <li>To respond to demo requests, questions and support tickets.</li>
+            <li>To send important service messages such as exam schedules, password resets and security alerts.</li>
+            <li>To detect, prevent and investigate cheating, fraud, abuse and security incidents.</li>
+            <li>To improve our features, performance and user experience.</li>
+            <li>To comply with legal obligations and enforce our terms.</li>
+          </ul>
+          <p>We send marketing messages only where permitted, and you can opt out at any time.</p>
+        </section>
+
+        <section id="proctor">
+          <h2>4. Proctoring and exam data</h2>
+          <p>Some exams on ExamPro may use online proctoring chosen by the institution that conducts the exam. Depending on the settings, this may include webcam images or video, microphone audio, screen activity, browser or tab-switch events and device information during the exam.</p>
+          <p>This data is used only to monitor exam integrity and to help the exam organiser review suspicious activity. Candidates will be informed of proctoring requirements before the exam begins. The institution running the exam decides what proctoring is used and who can view the recordings.</p>
+          <p>Exam answers, scores and results belong to the institution that conducted the exam. We process them on that institution's behalf and according to its instructions.</p>
+        </section>
+
+        <section id="share">
+          <h2>5. Sharing of information</h2>
+          <p>We do not sell your personal information. We share it only in the following cases:</p>
+          <ul>
+            <li><strong>With your institution or exam organiser,</strong> who can access exam data, results and proctoring records for their candidates.</li>
+            <li><strong>With service providers</strong> who help us run the platform, such as hosting, email, SMS, analytics and payment partners. They may use the data only to provide services to us.</li>
+            <li><strong>For legal reasons,</strong> when required by law, court order or a government authority, or to protect the rights, safety and property of ExamPro, our users or the public.</li>
+            <li><strong>In a business transfer,</strong> such as a merger or acquisition, where information may be transferred as part of the business.</li>
+          </ul>
+        </section>
+
+        <section id="cookies">
+          <h2>6. Cookies</h2>
+          <p>We use cookies and similar technologies to keep you signed in, remember your preferences, understand how our site is used and keep the platform secure. You can control or delete cookies from your browser settings. Blocking some cookies may affect how the platform works, for example you may not be able to stay logged in during an exam.</p>
+        </section>
+
+        <section id="security">
+          <h2>7. Data security</h2>
+          <p>We use reasonable technical and organisational measures to protect your information from unauthorised access, loss, misuse or alteration. These include encrypted connections, access controls based on user roles and regular monitoring of our systems.</p>
+          <p>No method of transmission or storage is completely secure, so we cannot guarantee absolute security. Please keep your password confidential and tell us immediately if you suspect unauthorised use of your account.</p>
+        </section>
+
+        <section id="retention">
+          <h2>8. Data retention</h2>
+          <p>We keep personal information only for as long as needed to provide our services, meet the purposes described in this policy, and comply with legal, accounting or reporting requirements. Exam records are retained according to the agreement with the institution that conducted the exam. When information is no longer needed, we delete it or make it anonymous.</p>
+        </section>
+
+        <section id="rights">
+          <h2>9. Your rights</h2>
+          <p>Subject to applicable law, including India's Digital Personal Data Protection Act, 2023, you may have the right to:</p>
+          <ul>
+            <li>Ask for access to the personal information we hold about you.</li>
+            <li>Ask us to correct inaccurate or incomplete information.</li>
+            <li>Ask us to delete your information, where it is no longer needed.</li>
+            <li>Withdraw your consent for processing that is based on consent.</li>
+            <li>Raise a grievance about how your information is handled.</li>
+          </ul>
+          <p>Students and candidates should first contact their institution, as the institution controls exam data. You can also write to us using the details below and we will respond within a reasonable time.</p>
+        </section>
+
+        <section id="children">
+          <h2>10. Students and minors</h2>
+          <p>Many of our users are school students. Accounts for minors are created and managed by their school or institute, which is responsible for obtaining any consent required from parents or guardians. We do not knowingly collect personal information directly from children for marketing purposes. If you believe a child's information has been shared with us without proper consent, please contact us and we will take appropriate action.</p>
+        </section>
+
+        <section id="links">
+          <h2>11. Third-party links</h2>
+          <p>Our website may link to other sites, such as social media pages. We are not responsible for the privacy practices or content of those sites, so please read their policies separately.</p>
+        </section>
+
+        <section id="changes">
+          <h2>12. Changes to this policy</h2>
+          <p>We may update this Privacy Policy from time to time. When we do, we will change the "Last updated" date at the top of this page. If the changes are significant, we will give a clearer notice. Please review this page regularly.</p>
+        </section>
+
+        <section id="contact">
+          <h2>13. Contact us</h2>
+          <p>If you have any questions, requests or complaints about this policy or your personal information, please contact us:</p>
+          <div class="pp-contact">
+            <p><strong>ExamPro</strong></p>
+            <p>Email: <a href="mailto:info@exampro.in">info@exampro.in</a></p>
+            <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
+            <p>Address: Noida, Uttar Pradesh, India</p>
+            <p>You can also use our <a href="contact.html">contact page</a>.</p>
+          </div>
+        </section>
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <span class="ft-orb"></span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>Exam<span>Pro</span></a>
+        <p class="ft-tag">Secure Exams, Brighter Future</p>
+        <p class="ft-desc">A secure and easy-to-use online examination platform for schools, colleges, coaching institutes and organizations.</p>
+        <form class="ft-news" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="ft-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="features.html"><i class="fa-solid fa-angle-right"></i> Features</a></li>
+          <li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li>
+          <li><a href="about-us.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="ft-contact">
+          <li><span class="ft-ic"><i class="fa-solid fa-phone"></i></span><a href="tel:+919876543210">+91 78807 26119</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-envelope"></i></span><a href="mailto:info@exampro.in">info@exampro.in</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-location-dot"></i></span><span>Noida, Uttar Pradesh, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p class="ft-follow">Stay connected for updates, tips and offers.</p>
+        <div class="footer-social">
+          <a href="#" class="so-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="so-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="so-x" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="so-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ExamPro. All rights reserved.</span>
+      <span class="ft-legal"><a href="privacy-policy.html">Privacy Policy</a><i class="ft-sep"></i><a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+  <a href="#" class="ft-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</footer>
+
+<!-- Demo popup -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Schedule a Demo</h2>
+    <hr class="modal-divider">
+    <form class="demo-form">
+      <div class="field-group"><label>Name</label><input type="text"></div>
+      <div class="field-group"><label>Phone Number</label>
+        <div><select class="country-code"><option>India (91)</option><option>USA (1)</option><option>UK (44)</option></select></div>
+      </div>
+      <div class="field-group"><label>Email</label><input type="email"></div>
+      <div class="field-group"><label>Organisation</label><input type="text"></div>
+      <div class="checkbox-grid">
+        <label class="check-item"><input type="checkbox" name="role"> I have a coaching centre</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a school</label>
+        <!-- <label class="check-item"><input type="checkbox" name="role"> I have a hospital</label> -->
+        <label class="check-item"><input type="checkbox" name="role"> Other</label>
+      </div>
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  const demoModal = document.getElementById('demoModal');
+  document.querySelectorAll('.nav-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); demoModal.classList.add('active'); });
+  });
+  document.getElementById('modalClose').addEventListener('click', () => demoModal.classList.remove('active'));
+  demoModal.addEventListener('click', (e) => { if (e.target === demoModal) demoModal.classList.remove('active'); });
+</script>
+</body>
+</html>

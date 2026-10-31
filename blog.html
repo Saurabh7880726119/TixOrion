@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - ExamPro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="assets/img/logo.png" rel="icon">
+
+<style>
+/* ===== Blog page (sirf is page ke liye) ===== */
+.bg { --brand:#ee4d1f; --brand-2:#ff8a5c; --blue:#2f6bff; --navy:#12203f; --muted:#5d6a85; font-family:'Poppins',sans-serif; color:var(--navy); }
+.bg section { padding:80px 0; }
+.bg .wrap { width:min(1160px,92%); margin:0 auto; }
+.bg h2 { margin:0 0 14px; font-size:36px; line-height:1.2; font-weight:700; }
+.bg p { margin:0 0 14px; color:var(--muted); font-size:16px; line-height:1.8; }
+.bg-tag { display:inline-block; padding:6px 16px; margin-bottom:16px; font-size:13px; font-weight:600; color:var(--brand); background:rgba(238,77,31,.10); border-radius:50px; }
+
+/* Banner */
+.bg-banner { position:relative; overflow:hidden; padding:90px 0 110px !important; text-align:center; color:#fff; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); }
+.bg-banner::before { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.14) 1.5px,transparent 1.5px); background-size:26px 26px; -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%); mask-image:linear-gradient(180deg,#000,transparent 85%); }
+.bg-banner::after { content:""; position:absolute; width:400px; height:400px; right:-110px; top:-170px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.5),transparent 70%); }
+.bg-banner .wrap { position:relative; z-index:1; }
+.bg-banner h1 { margin:0 0 14px; font-size:50px; line-height:1.15; font-weight:800; }
+.bg-banner p { max-width:600px; margin:0 auto 22px; color:rgba(255,255,255,.86); }
+.bg-crumb { font-size:14px; color:rgba(255,255,255,.8); }
+.bg-crumb a { color:#fff; text-decoration:none; font-weight:600; }
+.bg-wave { position:absolute; left:0; bottom:-1px; width:100%; height:60px; z-index:1; }
+
+/* Toolbar */
+.bg-bar { padding:0 0 10px !important; margin-top:-30px; position:relative; z-index:2; }
+.bg-bar .box { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; padding:16px 18px 16px 22px; background:#fff; border:1px solid #e8ecf4; border-radius:20px; box-shadow:0 16px 36px rgba(20,40,100,.12); }
+.bg-tabs { display:flex; flex-wrap:wrap; gap:8px; }
+.bg-tabs button { padding:9px 20px; font:inherit; font-size:14px; font-weight:600; color:var(--muted); cursor:pointer; background:#f7f9ff; border:1.5px solid transparent; border-radius:50px; transition:all .25s; }
+.bg-tabs button:hover { color:var(--blue); border-color:var(--blue); }
+.bg-tabs button.on { color:#fff; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 18px rgba(238,77,31,.35); }
+.bg-search { position:relative; flex:1 1 260px; max-width:340px; }
+.bg-search i { position:absolute; left:16px; top:50%; transform:translateY(-50%); font-size:14px; color:#9aa6bf; }
+.bg-search input { width:100%; box-sizing:border-box; padding:12px 16px 12px 42px; font:inherit; font-size:14.5px; color:var(--navy); background:#f7f9ff; border:1.5px solid #e1e7f5; border-radius:50px; outline:none; transition:border-color .25s, box-shadow .25s; }
+.bg-search input:focus { background:#fff; border-color:var(--blue); box-shadow:0 0 0 4px rgba(47,107,255,.12); }
+
+/* Post image (fallback gradient + icon) */
+.bg-img { position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:46px; color:rgba(255,255,255,.55); background:linear-gradient(135deg,var(--c1),var(--c2)); }
+.bg-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.bg-cat { display:inline-block; padding:5px 14px; font-size:12.5px; font-weight:600; color:var(--c1); background:var(--soft); border-radius:50px; }
+.bg-meta { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:#8792ab; }
+.bg-meta i { margin-right:5px; color:var(--c1); }
+.bg-more { display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600; color:var(--c1); text-decoration:none; }
+.bg-more i { font-size:12px; transition:transform .3s; }
+.bg-more:hover i { transform:translateX(5px); }
+
+/* Category colours */
+[data-cat="Exam Tips"]    { --c1:#2f6bff; --c2:#7aa2ff; --soft:rgba(47,107,255,.12); }
+[data-cat="Security"]     { --c1:#ee4d1f; --c2:#ff8a5c; --soft:rgba(238,77,31,.12); }
+[data-cat="Product Tips"] { --c1:#10b981; --c2:#5fdcb2; --soft:rgba(16,185,129,.12); }
+[data-cat="Education"]    { --c1:#7c5cff; --c2:#a995ff; --soft:rgba(124,92,255,.12); }
+
+/* Featured */
+.bg-feat { display:grid; grid-template-columns:1.15fr 1fr; margin:46px 0 60px; background:#fff; border:1px solid #e8ecf4; border-radius:28px; overflow:hidden; box-shadow:0 18px 44px rgba(20,40,100,.12); }
+.bg-feat .bg-img { min-height:380px; font-size:90px; }
+.bg-feat:hover .bg-img img { transform:scale(1.05); }
+.bg-feat .body { padding:44px 42px; display:flex; flex-direction:column; justify-content:center; }
+.bg-flag { display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; font-size:13px; font-weight:700; color:var(--brand); }
+.bg-feat h2 { margin:14px 0 12px; font-size:30px; }
+.bg-feat h2 a { color:inherit; text-decoration:none; }
+.bg-feat h2 a:hover { color:var(--c1); }
+.bg-feat p { margin:0 0 20px; font-size:15.5px; }
+.bg-feat .bg-meta { margin-bottom:22px; }
+
+/* Grid */
+.bg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+.bg-card { display:flex; flex-direction:column; background:#fff; border:1px solid #e8ecf4; border-radius:22px; overflow:hidden; box-shadow:0 10px 26px rgba(20,40,100,.07); transition:transform .3s, box-shadow .3s; animation:bg-in .45s ease both; }
+.bg-card:hover { transform:translateY(-8px); box-shadow:0 22px 44px rgba(20,40,100,.15); }
+.bg-card:hover .bg-img img { transform:scale(1.07); }
+.bg-card.hide { display:none; }
+@keyframes bg-in { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+.bg-card .bg-img { aspect-ratio:16/10; }
+.bg-card .body { display:flex; flex-direction:column; flex:1; padding:24px 24px 26px; }
+.bg-card .bg-cat { align-self:flex-start; margin-bottom:12px; }
+.bg-card h3 { margin:0 0 10px; font-size:19px; line-height:1.4; }
+.bg-card h3 a { color:inherit; text-decoration:none; }
+.bg-card h3 a:hover { color:var(--c1); }
+.bg-card p { margin:0 0 16px; font-size:14.5px; line-height:1.7; }
+.bg-card .foot { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:16px; border-top:1px dashed #dfe5f3; }
+.bg-empty { display:none; padding:60px 20px; text-align:center; }
+.bg-empty.show { display:block; }
+.bg-empty i { margin-bottom:14px; font-size:42px; color:#c9d3ea; }
+.bg-empty h3 { margin:0 0 6px; }
+
+/* Newsletter */
+.bg-news { padding-top:0 !important; }
+.bg-news .box { display:grid; grid-template-columns:1.2fr 1fr; gap:34px; align-items:center; padding:54px 50px; color:#fff; border-radius:30px; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); position:relative; overflow:hidden; }
+.bg-news .box::after { content:""; position:absolute; width:300px; height:300px; right:-80px; top:-130px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.45),transparent 70%); }
+.bg-news .box > * { position:relative; z-index:1; }
+.bg-news h2 { color:#fff; font-size:32px; }
+.bg-news p { margin:0; color:rgba(255,255,255,.85); }
+.bg-form { display:flex; padding:6px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3); border-radius:50px; }
+.bg-form input { flex:1; min-width:0; padding:0 18px; font:inherit; font-size:15px; color:#fff; background:none; border:0; outline:none; }
+.bg-form input::placeholder { color:rgba(255,255,255,.65); }
+.bg-form button { padding:13px 26px; font:inherit; font-size:14.5px; font-weight:600; color:#fff; cursor:pointer; border:0; border-radius:50px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 18px rgba(238,77,31,.4); }
+.bg-ok { display:none; margin-top:12px; font-size:14px; color:#b6f3dc; }
+.bg-ok.show { display:block; }
+
+@media (max-width:992px) {
+  .bg-grid { grid-template-columns:repeat(2,1fr); }
+  .bg-feat { grid-template-columns:1fr; }
+  .bg-feat .bg-img { min-height:260px; }
+  .bg-news .box { grid-template-columns:1fr; padding:44px 28px; text-align:center; }
+}
+@media (max-width:560px) {
+  .bg section { padding:56px 0; }
+  .bg-banner { padding:70px 0 90px !important; }
+  .bg-banner h1 { font-size:32px; }
+  .bg h2, .bg-news h2 { font-size:27px; }
+  .bg-bar .box { padding:14px; }
+  .bg-search { max-width:none; }
+  .bg-tabs { overflow-x:auto; flex-wrap:nowrap; width:100%; padding-bottom:4px; }
+  .bg-tabs button { white-space:nowrap; }
+  .bg-grid { grid-template-columns:1fr; }
+  .bg-feat .body { padding:28px 22px; }
+  .bg-feat h2 { font-size:23px; }
+  .bg-form { flex-direction:column; border-radius:22px; padding:10px; gap:10px; }
+  .bg-form input { padding:10px 14px; }
+}
+@media (prefers-reduced-motion:reduce) { .bg-card { animation:none; } .bg-card, .bg-img img { transition:none; } }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><a href="index.html"><img src="assets/img/logo.png" alt="ExamPro Logo" class="logo-img"></a></div>
+    <nav class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn btn-primary nav-cta nav-cta-mobile">Schedule a Demo <span class="btn-arrow">→</span></button>
+    </nav>
+    <button class="btn btn-primary nav-cta nav-cta-desktop">Schedule a Demo <span class="btn-arrow">→</span></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="bg">
+
+  <!-- Banner -->
+  <section class="bg-banner">
+    <div class="wrap">
+      <h1>ExamPro Blog</h1>
+      <p>Tips, guides and ideas to help you run better, fairer and easier online exams.</p>
+      <div class="bg-crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Blog</div>
+    </div>
+    <svg class="bg-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 L0,30 C300,0 900,60 1200,10 L1200,60 Z" fill="#ffffff"></path></svg>
+  </section>
+
+  <!-- Toolbar -->
+  <section class="bg-bar">
+    <div class="wrap">
+      <div class="box">
+        <div class="bg-tabs" id="bgTabs">
+          <button type="button" class="on" data-f="all">All</button>
+          <button type="button" data-f="Exam Tips">Exam Tips</button>
+          <button type="button" data-f="Security">Security</button>
+          <button type="button" data-f="Product Tips">Product Tips</button>
+          <button type="button" data-f="Education">Education</button>
+        </div>
+        <div class="bg-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="bgSearch" placeholder="Search articles" aria-label="Search articles">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts -->
+  <!-- Post images: assets/img/blog/ folder mein rakhein (1200x750, jpg/webp). Image na mile to gradient dikhega. -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+
+      <!-- Featured -->
+      <article class="bg-feat" data-cat="Exam Tips" id="bgFeat">
+        <a href="blog-post.html" class="bg-img" aria-label="Read the featured article"><i class="fa-solid fa-laptop-file"></i><img src="https://www.trainotracksolutions.com/images/vouchers/d79ca2ee-5d30-4d54-bf91-feaffd2ea0f3.webp" alt="Secure online exams guide" onerror="this.style.display='none'"></a>
+        <div class="body">
+          <span class="bg-flag"><i class="fa-solid fa-star"></i>Featured article</span>
+          <span class="bg-cat" style="align-self:flex-start;">Exam Tips</span>
+          <h2><a href="blog-post.html">How to Conduct Secure Online Exams: A Complete Guide for Schools</a></h2>
+          <p>From planning the paper to monitoring exam day, here is a step-by-step guide to running online exams that are fair, smooth and stress-free for teachers and students.</p>
+          <div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>October 5, 2026</span><span><i class="fa-regular fa-clock"></i>8 min read</span><span><i class="fa-regular fa-user"></i>ExamPro Team</span></div>
+          <a href="blog-post.html" class="bg-more">Read article <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Grid -->
+      <div class="bg-grid" id="bgGrid">
+
+        <article class="bg-card" data-cat="Security">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-user-shield"></i><img src="https://www.trainotracksolutions.com/images/vouchers/d79ca2ee-5d30-4d54-bf91-feaffd2ea0f3.webp" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Security</span>
+            <h3><a href="blog-post.html">5 Ways to Reduce Cheating in Online Exams</a></h3>
+            <p>Simple settings and habits that discourage cheating without making the exam stressful for honest students.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Sep 28, 2026</span><span><i class="fa-regular fa-clock"></i>6 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Exam Tips">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-scale-balanced"></i><img src="https://www.trainotracksolutions.com/images/vouchers/d79ca2ee-5d30-4d54-bf91-feaffd2ea0f3.webp" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Exam Tips</span>
+            <h3><a href="blog-post.html">Paper vs Online Exams: What Should Your Institute Choose?</a></h3>
+            <p>A fair look at cost, time, security and student experience to help you decide what fits your institution.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Sep 21, 2026</span><span><i class="fa-regular fa-clock"></i>7 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Education">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-bolt"></i><img src="assets/img/blog/post3.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Education</span>
+            <h3><a href="blog-post.html">How Instant Results Help Students Learn Faster</a></h3>
+            <p>Quick feedback keeps mistakes fresh in the mind. Here is why timely results make a real difference.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Sep 14, 2026</span><span><i class="fa-regular fa-clock"></i>5 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Product Tips">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-database"></i><img src="assets/img/blog/post4.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Product Tips</span>
+            <h3><a href="blog-post.html">Building a Question Bank That Saves Hours Every Term</a></h3>
+            <p>Organize questions by topic and difficulty once, and reuse them for every test you create.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Sep 7, 2026</span><span><i class="fa-regular fa-clock"></i>6 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Product Tips">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-chart-pie"></i><img src="assets/img/blog/post5.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Product Tips</span>
+            <h3><a href="blog-post.html">Using Exam Analytics to Find Weak Topics</a></h3>
+            <p>Turn exam reports into action by spotting the topics where your batch needs extra help.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Aug 30, 2026</span><span><i class="fa-regular fa-clock"></i>5 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Education">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-user-graduate"></i><img src="assets/img/blog/post6.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Education</span>
+            <h3><a href="blog-post.html">Preparing Students for Their First Online Exam</a></h3>
+            <p>Practical ways to help students feel confident and ready before they log in on exam day.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Aug 22, 2026</span><span><i class="fa-regular fa-clock"></i>5 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Exam Tips">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-list-check"></i><img src="assets/img/blog/post7.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Exam Tips</span>
+            <h3><a href="blog-post.html">A Checklist for Your First Online Exam Day</a></h3>
+            <p>Everything to check before, during and after the exam so nothing is left to chance.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Aug 15, 2026</span><span><i class="fa-regular fa-clock"></i>4 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Security">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-video"></i><img src="assets/img/blog/post8.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Security</span>
+            <h3><a href="blog-post.html">Online Proctoring Explained: What It Is and How It Works</a></h3>
+            <p>A plain-language look at proctoring, what it can and cannot do, and how to use it responsibly.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Aug 8, 2026</span><span><i class="fa-regular fa-clock"></i>7 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+        <article class="bg-card" data-cat="Education">
+          <a href="blog-post.html" class="bg-img" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-magnifying-glass-chart"></i><img src="assets/img/blog/post9.jpg" alt="" onerror="this.style.display='none'"></a>
+          <div class="body">
+            <span class="bg-cat">Education</span>
+            <h3><a href="blog-post.html">What to Look for in an Online Exam Platform</a></h3>
+            <p>The key questions to ask before you choose a platform for your school, college or coaching institute.</p>
+            <div class="foot"><div class="bg-meta"><span><i class="fa-regular fa-calendar"></i>Aug 1, 2026</span><span><i class="fa-regular fa-clock"></i>6 min</span></div><a href="blog-post.html" class="bg-more" aria-label="Read more"><i class="fa-solid fa-arrow-right"></i></a></div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="bg-empty" id="bgEmpty">
+        <i class="fa-regular fa-face-frown"></i>
+        <h3>No articles found</h3>
+        <p>Try a different word or choose another category.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-news">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <h2>Get new articles in your inbox</h2>
+          <p>Exam tips and product updates, sent only when we have something useful to share.</p>
+        </div>
+        <div>
+          <form class="bg-form" id="bgForm" novalidate>
+            <input type="email" id="bgEmail" placeholder="Enter your email" aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="bg-ok" id="bgOk"><i class="fa-solid fa-circle-check"></i> Thank you for subscribing!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <span class="ft-orb"></span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>Exam<span>Pro</span></a>
+        <p class="ft-tag">Secure Exams, Brighter Future</p>
+        <p class="ft-desc">A secure and easy-to-use online examination platform for schools, colleges, coaching institutes and organizations.</p>
+        <form class="ft-news" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="ft-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="features.html"><i class="fa-solid fa-angle-right"></i> Features</a></li>
+          <li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+          <li><a href="about-us.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="ft-contact">
+          <li><span class="ft-ic"><i class="fa-solid fa-phone"></i></span><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-envelope"></i></span><a href="mailto:info@exampro.in">info@exampro.in</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-location-dot"></i></span><span>Noida, Uttar Pradesh, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p class="ft-follow">Stay connected for updates, tips and offers.</p>
+        <div class="footer-social">
+          <a href="#" class="so-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="so-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="so-x" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="so-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ExamPro. All rights reserved.</span>
+      <span class="ft-legal"><a href="privacy-policy.html">Privacy Policy</a><i class="ft-sep"></i><a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+  <a href="#" class="ft-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</footer>
+
+<!-- Demo popup -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Schedule a Demo</h2>
+    <hr class="modal-divider">
+    <form class="demo-form">
+      <div class="field-group"><label>Name</label><input type="text"></div>
+      <div class="field-group"><label>Phone Number</label>
+        <div><select class="country-code"><option>India (91)</option><option>USA (1)</option><option>UK (44)</option></select></div>
+      </div>
+      <div class="field-group"><label>Email</label><input type="email"></div>
+      <div class="field-group"><label>Organisation</label><input type="text"></div>
+      <div class="checkbox-grid">
+        <label class="check-item"><input type="checkbox" name="role"> I have a coaching centre</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a school</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a hospital</label>
+        <label class="check-item"><input type="checkbox" name="role"> Other</label>
+      </div>
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  const demoModal = document.getElementById('demoModal');
+  document.querySelectorAll('.nav-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); demoModal.classList.add('active'); });
+  });
+  document.getElementById('modalClose').addEventListener('click', () => demoModal.classList.remove('active'));
+  demoModal.addEventListener('click', (e) => { if (e.target === demoModal) demoModal.classList.remove('active'); });
+
+  // Blog filter + search (category aur search dono saath chalte hain)
+  const tabs = document.querySelectorAll('#bgTabs button');
+  const search = document.getElementById('bgSearch');
+  const feat = document.getElementById('bgFeat');
+  const cards = document.querySelectorAll('#bgGrid .bg-card');
+  const empty = document.getElementById('bgEmpty');
+  let cat = 'all';
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    const match = (el) => (cat === 'all' || el.dataset.cat === cat) && (!q || el.textContent.toLowerCase().includes(q));
+
+    // Featured post sirf tab dikhao jab filter use na ho ya wo match kare
+    feat.style.display = match(feat) ? '' : 'none';
+    if (match(feat)) shown++;
+
+    cards.forEach(c => {
+      const ok = match(c);
+      c.classList.toggle('hide', !ok);
+      if (ok) shown++;
+    });
+    empty.classList.toggle('show', shown === 0);
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    cat = t.dataset.f;
+    apply();
+  }));
+  search.addEventListener('input', apply);
+
+  // Newsletter (abhi sirf front-end)
+  document.getElementById('bgForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('bgEmail');
+    const ok = document.getElementById('bgOk');
+    if (!email.value.trim() || !email.checkValidity()) { email.style.outline = '2px solid #ff8a5c'; ok.classList.remove('show'); return; }
+    email.style.outline = '';
+    // TODO: yahan email ko backend / Mailchimp se connect karein
+    ok.classList.add('show');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

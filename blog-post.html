@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Conduct Secure Online Exams: A Complete Guide for Schools - ExamPro Blog</title>
+<meta name="description" content="A step-by-step guide to running online exams that are fair, smooth and stress-free for teachers and students.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="assets/img/logo.png" rel="icon">
+
+<style>
+/* ===== Blog article page (sirf is page ke liye) ===== */
+.bp { --brand:#ee4d1f; --brand-2:#ff8a5c; --blue:#2f6bff; --navy:#12203f; --muted:#5d6a85; font-family:'Poppins',sans-serif; color:var(--navy); }
+.bp .wrap { width:min(1160px,92%); margin:0 auto; }
+.bp-prog { position:fixed; top:0; left:0; z-index:9999; width:0; height:4px; background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--blue)); }
+
+/* Banner */
+.bp-banner { position:relative; overflow:hidden; padding:80px 0 130px; color:#fff; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); }
+.bp-banner::before { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.14) 1.5px,transparent 1.5px); background-size:26px 26px; -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%); mask-image:linear-gradient(180deg,#000,transparent 85%); }
+.bp-banner::after { content:""; position:absolute; width:400px; height:400px; right:-110px; top:-170px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.5),transparent 70%); }
+.bp-banner .wrap { position:relative; z-index:1; max-width:860px; text-align:center; }
+.bp-crumb { margin-bottom:22px; font-size:14px; color:rgba(255,255,255,.8); }
+.bp-crumb a { color:#fff; text-decoration:none; font-weight:600; }
+.bp-cat { display:inline-block; padding:6px 16px; margin-bottom:18px; font-size:13px; font-weight:600; color:#fff; background:var(--brand); border-radius:50px; }
+.bp-banner h1 { margin:0 0 22px; font-size:42px; line-height:1.25; font-weight:800; }
+.bp-meta { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 24px; font-size:14px; color:rgba(255,255,255,.85); }
+.bp-meta i { margin-right:7px; color:var(--brand-2); }
+
+/* Cover image (banner ke upar overlap) */
+.bp-cover { position:relative; z-index:2; margin:-90px auto 0; width:min(1000px,92%); }
+.bp-cimg { position:relative; overflow:hidden; aspect-ratio:16/8; display:flex; align-items:center; justify-content:center; font-size:100px; color:rgba(255,255,255,.5); background:linear-gradient(135deg,#2f6bff,#7aa2ff); border:6px solid #fff; border-radius:28px; box-shadow:0 26px 54px rgba(20,40,100,.25); }
+.bp-cimg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* Layout */
+.bp-body { padding:60px 0 40px; }
+.bp-layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:56px; align-items:start; }
+
+/* Article typography */
+.bp-art { font-size:17px; line-height:1.9; color:#3b4763; }
+.bp-art > p:first-of-type::first-letter { float:left; margin:6px 12px 0 0; font-size:64px; line-height:.85; font-weight:800; color:var(--brand); }
+.bp-art p { margin:0 0 20px; }
+.bp-art h2 { position:relative; margin:46px 0 16px; padding-left:18px; font-size:28px; line-height:1.3; color:var(--navy); scroll-margin-top:100px; }
+.bp-art h2::before { content:""; position:absolute; left:0; top:5px; bottom:5px; width:5px; border-radius:5px; background:linear-gradient(180deg,var(--brand),var(--brand-2)); }
+.bp-art h3 { margin:28px 0 10px; font-size:21px; color:var(--navy); }
+.bp-art ul, .bp-art ol { margin:0 0 22px; padding-left:24px; }
+.bp-art li { margin-bottom:8px; }
+.bp-art li::marker { color:var(--brand); font-weight:700; }
+.bp-art strong { color:var(--navy); font-weight:600; }
+.bp-art a { color:var(--blue); }
+.bp-art blockquote { margin:30px 0; padding:24px 28px 24px 34px; font-size:20px; line-height:1.7; font-weight:500; color:var(--navy); background:#f7f9ff; border-left:5px solid var(--blue); border-radius:0 18px 18px 0; }
+.bp-tip { display:flex; gap:16px; margin:30px 0; padding:22px 24px; background:#fff7f3; border:1px solid #f6d9cc; border-radius:18px; }
+.bp-tip > i { flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:18px; color:#fff; background:linear-gradient(135deg,var(--brand),var(--brand-2)); border-radius:12px; }
+.bp-tip b { display:block; margin-bottom:4px; color:var(--navy); }
+.bp-tip p { margin:0; font-size:15.5px; line-height:1.75; }
+.bp-check { list-style:none; padding:0 !important; }
+.bp-check li { display:flex; gap:12px; align-items:flex-start; padding:12px 16px; margin-bottom:10px; background:#f7f9ff; border-radius:12px; }
+.bp-check li i { flex-shrink:0; width:22px; height:22px; margin-top:4px; display:flex; align-items:center; justify-content:center; font-size:10px; color:#fff; background:linear-gradient(135deg,#10b981,#5fdcb2); border-radius:50%; }
+
+/* Tags + share */
+.bp-foot { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; margin-top:44px; padding:22px 0; border-top:1px solid #e8ecf4; border-bottom:1px solid #e8ecf4; }
+.bp-tags { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.bp-tags span { font-weight:600; font-size:14px; }
+.bp-tags a { padding:6px 14px; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; background:#f1f4fb; border-radius:50px; transition:all .25s; }
+.bp-tags a:hover { color:#fff; background:var(--blue); }
+.bp-share { display:flex; align-items:center; gap:8px; }
+.bp-share > span { margin-right:4px; font-size:14px; font-weight:600; }
+.bp-share a, .bp-share button { width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:15px; color:#fff; text-decoration:none; cursor:pointer; border:0; border-radius:50%; transition:transform .25s, box-shadow .25s; }
+.bp-share a:hover, .bp-share button:hover { transform:translateY(-4px); box-shadow:0 10px 18px rgba(0,0,0,.2); }
+.s-wa { background:#25d366; } .s-in { background:#0a66c2; } .s-fb { background:#1877f2; } .s-x { background:#000; } .s-cp { background:var(--brand); }
+
+/* Author */
+.bp-author { display:flex; gap:22px; align-items:center; margin-top:34px; padding:28px; background:linear-gradient(135deg,#f7f9ff,#fff7f3); border:1px solid #e8ecf4; border-radius:22px; }
+.bp-av { position:relative; flex-shrink:0; width:92px; height:92px; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:34px; color:#fff; background:linear-gradient(135deg,var(--blue),#7aa2ff); border:4px solid #fff; border-radius:50%; box-shadow:0 10px 22px rgba(20,40,100,.18); }
+.bp-av img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.bp-author h4 { margin:0 0 2px; font-size:18px; }
+.bp-author small { display:block; margin-bottom:8px; font-size:13.5px; font-weight:600; color:var(--brand); }
+.bp-author p { margin:0; font-size:14.5px; line-height:1.7; color:var(--muted); }
+
+/* Prev / next */
+.bp-nav { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:34px; }
+.bp-nav a { padding:20px 22px; text-decoration:none; color:var(--navy); background:#fff; border:1px solid #e8ecf4; border-radius:18px; transition:border-color .25s, transform .25s, box-shadow .25s; }
+.bp-nav a:hover { border-color:var(--brand-2); transform:translateY(-4px); box-shadow:0 14px 28px rgba(20,40,100,.1); }
+.bp-nav small { display:block; margin-bottom:6px; font-size:12.5px; font-weight:600; color:var(--brand); }
+.bp-nav b { font-size:15.5px; line-height:1.4; }
+.bp-nav a:last-child { text-align:right; }
+
+/* Sidebar */
+.bp-side { position:sticky; top:96px; display:grid; gap:24px; }
+.bp-box { padding:26px 24px; background:#fff; border:1px solid #e8ecf4; border-radius:20px; box-shadow:0 10px 26px rgba(20,40,100,.07); }
+.bp-box h4 { margin:0 0 16px; font-size:17px; }
+.bp-toc { list-style:none; margin:0; padding:0; display:grid; gap:4px; }
+.bp-toc a { display:block; padding:9px 14px; font-size:14.5px; line-height:1.5; font-weight:500; color:var(--muted); text-decoration:none; border-left:3px solid #e1e7f5; border-radius:0 10px 10px 0; transition:all .25s; }
+.bp-toc a:hover { color:var(--blue); }
+.bp-toc a.on { color:var(--brand); font-weight:600; background:rgba(238,77,31,.08); border-left-color:var(--brand); }
+.bp-cta { color:#fff; text-align:center; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); border:0; position:relative; overflow:hidden; }
+.bp-cta::after { content:""; position:absolute; width:180px; height:180px; right:-60px; top:-70px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.5),transparent 70%); }
+.bp-cta > * { position:relative; z-index:1; }
+.bp-cta i { width:58px; height:58px; margin-bottom:14px; display:inline-flex; align-items:center; justify-content:center; font-size:24px; background:rgba(255,255,255,.15); border-radius:50%; }
+.bp-cta h4 { margin:0 0 8px; font-size:19px; color:#fff; }
+.bp-cta p { margin:0 0 18px; font-size:14px; line-height:1.65; color:rgba(255,255,255,.85); }
+.bp-btn { display:inline-block; padding:12px 26px; font-size:14.5px; font-weight:600; color:#fff; text-decoration:none; border-radius:50px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 10px 22px rgba(238,77,31,.4); }
+
+/* Related */
+.bp-rel { padding:70px 0 90px; background:linear-gradient(180deg,#f7f9ff,#fff); }
+.bp-rel h2 { margin:0 0 36px; text-align:center; font-size:34px; }
+.bp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.bp-card { --c1:#2f6bff; --c2:#7aa2ff; overflow:hidden; display:flex; flex-direction:column; background:#fff; border:1px solid #e8ecf4; border-radius:22px; box-shadow:0 10px 26px rgba(20,40,100,.07); transition:transform .3s, box-shadow .3s; }
+.bp-card:nth-child(2) { --c1:#ee4d1f; --c2:#ff8a5c; } .bp-card:nth-child(3) { --c1:#7c5cff; --c2:#a995ff; }
+.bp-card:hover { transform:translateY(-8px); box-shadow:0 22px 44px rgba(20,40,100,.15); }
+.bp-ri { position:relative; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; font-size:44px; color:rgba(255,255,255,.55); background:linear-gradient(135deg,var(--c1),var(--c2)); overflow:hidden; }
+.bp-ri img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.bp-rb { padding:22px 24px 26px; }
+.bp-rb small { display:block; margin-bottom:8px; font-size:12.5px; font-weight:600; color:var(--c1); }
+.bp-rb h3 { margin:0 0 8px; font-size:18px; line-height:1.4; }
+.bp-rb h3 a { color:var(--navy); text-decoration:none; }
+.bp-rb h3 a:hover { color:var(--c1); }
+.bp-rb span { font-size:13px; color:#8792ab; }
+
+.bp-toast { position:fixed; left:50%; bottom:30px; z-index:9999; padding:12px 24px; font-size:14px; font-weight:500; color:#fff; background:#12203f; border-radius:50px; box-shadow:0 14px 30px rgba(0,0,0,.3); opacity:0; transform:translate(-50%,20px); pointer-events:none; transition:all .3s; }
+.bp-toast.show { opacity:1; transform:translate(-50%,0); }
+
+@media (max-width:992px) {
+  .bp-banner h1 { font-size:34px; }
+  .bp-layout { grid-template-columns:1fr; gap:40px; }
+  .bp-side { position:static; }
+  .bp-toc-box { display:none; }
+  .bp-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:560px) {
+  .bp-banner { padding:60px 0 110px; }
+  .bp-banner h1 { font-size:26px; }
+  .bp-cimg { font-size:60px; border-width:4px; border-radius:20px; aspect-ratio:16/10; }
+  .bp-art { font-size:16px; }
+  .bp-art h2 { font-size:23px; }
+  .bp-art blockquote { font-size:17px; padding:20px 20px 20px 24px; }
+  .bp-tip { flex-direction:column; }
+  .bp-foot { flex-direction:column; align-items:flex-start; }
+  .bp-author { flex-direction:column; text-align:center; }
+  .bp-nav, .bp-grid { grid-template-columns:1fr; }
+  .bp-nav a:last-child { text-align:left; }
+  .bp-rel h2 { font-size:27px; }
+}
+@media (prefers-reduced-motion:reduce) { .bp-card, .bp-nav a, .bp-toast { transition:none; } }
+</style>
+</head>
+<body>
+
+<div class="bp-prog" id="bpProg"></div>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><a href="index.html"><img src="assets/img/logo.png" alt="ExamPro Logo" class="logo-img"></a></div>
+    <nav class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn btn-primary nav-cta nav-cta-mobile">Schedule a Demo <span class="btn-arrow">→</span></button>
+    </nav>
+    <button class="btn btn-primary nav-cta nav-cta-desktop">Schedule a Demo <span class="btn-arrow">→</span></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="bp">
+
+  <!-- Banner -->
+  <section class="bp-banner">
+    <div class="wrap">
+      <div class="bp-crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="blog.html">Blog</a> &nbsp;/&nbsp; Exam Tips</div>
+      <span class="bp-cat">Exam Tips</span>
+      <h1>How to Conduct Secure Online Exams: A Complete Guide for Schools</h1>
+      <div class="bp-meta">
+        <span><i class="fa-regular fa-user"></i>ExamPro Team</span>
+        <span><i class="fa-regular fa-calendar"></i>October 5, 2026</span>
+        <span><i class="fa-regular fa-clock"></i>8 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover image: assets/img/blog/featured.jpg (1600x800) -->
+  <div class="bp-cover">
+    <div class="bp-cimg"><i class="fa-solid fa-laptop-file"></i><img src="https://www.trainotracksolutions.com/images/vouchers/d79ca2ee-5d30-4d54-bf91-feaffd2ea0f3.webp" alt="Secure online exams guide" onerror="this.style.display='none'"></div>
+  </div>
+
+  <!-- Article -->
+  <div class="bp-body">
+    <div class="wrap bp-layout">
+
+      <div>
+        <article class="bp-art" id="bpArt">
+          <p>Online exams have moved from a backup plan to an everyday tool for schools. Done well, they save hours of printing and checking, give students faster feedback and make results easier to track. Done badly, they cause confusion, technical problems and doubts about fairness. This guide walks you through the whole process, from planning to results, so your first online exam goes smoothly.</p>
+
+          <h2 id="why">Why schools are moving online</h2>
+          <p>Most schools start with one simple goal: reduce the manual work around exams. Online platforms help in several ways:</p>
+          <ul>
+            <li><strong>Less paperwork:</strong> no printing, sorting or carrying answer sheets.</li>
+            <li><strong>Faster results:</strong> objective questions are checked automatically.</li>
+            <li><strong>Better records:</strong> every score and report stays in one place.</li>
+            <li><strong>Flexibility:</strong> students can appear from school labs or from home when needed.</li>
+          </ul>
+
+          <h2 id="plan">Step 1: Plan before you build</h2>
+          <p>Good online exams begin with a clear plan. Decide what you want to measure, who will take the exam and when. Check that students have a suitable device and internet connection, and share the exam date and instructions well in advance.</p>
+          <div class="bp-tip"><i class="fa-solid fa-lightbulb"></i><div><b>Pro tip</b><p>Run a short practice test a few days earlier. It helps students get used to the screen and helps you find problems before the real exam.</p></div></div>
+
+          <h2 id="paper">Step 2: Build a fair question paper</h2>
+          <p>An online paper should not simply copy the paper version. Mix easy, medium and hard questions, and use a question bank so you can pick from a larger pool. Many teachers also shuffle the order of questions and options, so students sitting next to each other do not see the same screen.</p>
+          <blockquote>A fair exam is not the one with the hardest questions. It is the one where every student has the same chance to show what they know.</blockquote>
+
+          <h2 id="security">Step 3: Keep the exam secure</h2>
+          <p>Security is the biggest worry for most schools. The good news is that a few simple controls make a big difference:</p>
+          <ul>
+            <li>Give every student a personal login and do not allow shared accounts.</li>
+            <li>Set a strict time limit and a fixed exam window.</li>
+            <li>Use proctoring or live monitoring where it is suitable for your students.</li>
+            <li>Keep question banks and papers accessible only to authorised staff.</li>
+          </ul>
+          <p>Always tell students beforehand what is being monitored and why. Clear communication builds trust and reduces anxiety.</p>
+
+          <h2 id="day">Step 4: Run the exam day smoothly</h2>
+          <p>On exam day, keep things calm and predictable. Ask students to log in a few minutes early, and keep a support contact ready for technical issues. Teachers or invigilators should watch the live dashboard and help anyone who gets stuck.</p>
+          <ul class="bp-check">
+            <li><i class="fa-solid fa-check"></i><span>Devices are charged and the browser is updated</span></li>
+            <li><i class="fa-solid fa-check"></i><span>Students have their login details and instructions</span></li>
+            <li><i class="fa-solid fa-check"></i><span>A backup plan exists for students with connection problems</span></li>
+            <li><i class="fa-solid fa-check"></i><span>A support person is available throughout the exam</span></li>
+          </ul>
+
+          <h2 id="after">Step 5: Use the results well</h2>
+          <p>After the exam, results and reports should do more than produce a rank list. Look at which questions many students missed, which topics need revisiting and which students may need extra support. This is where online exams give schools a real advantage over paper.</p>
+
+          <h2 id="wrap">Final thoughts</h2>
+          <p>Secure online exams do not need to be complicated. Plan early, build a fair paper, use sensible security controls and prepare your students. With the right platform and a little practice, your next exam can be easier for everyone involved.</p>
+        </article>
+
+        <div class="bp-foot">
+          <div class="bp-tags"><span>Tags:</span><a href="blog.html">Online exams</a><a href="blog.html">Schools</a><a href="blog.html">Security</a></div>
+          <div class="bp-share">
+            <span>Share:</span>
+            <a href="#" class="s-wa" id="shWa" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="s-in" id="shIn" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="s-fb" id="shFb" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="s-x" id="shX" target="_blank" rel="noopener" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
+            <button type="button" class="s-cp" id="shCp" aria-label="Copy link"><i class="fa-solid fa-link"></i></button>
+          </div>
+        </div>
+
+        <!-- Author: assets/img/team/author.jpg -->
+        <div class="bp-author">
+          <div class="bp-av"><i class="fa-solid fa-user"></i><img src="assets/img/team/author.jpg" alt="ExamPro Team" onerror="this.style.display='none'"></div>
+          <div>
+            <h4>ExamPro Team</h4>
+            <small>Online examination experts</small>
+            <p>We help schools, colleges and institutes run secure and simple online exams. Our articles share practical tips from real exam experience.</p>
+          </div>
+        </div>
+
+        <div class="bp-nav">
+          <a href="blog-post.html"><small><i class="fa-solid fa-arrow-left"></i> Previous article</small><b>What to Look for in an Online Exam Platform</b></a>
+          <a href="blog-post.html"><small>Next article <i class="fa-solid fa-arrow-right"></i></small><b>5 Ways to Reduce Cheating in Online Exams</b></a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="bp-side">
+        <div class="bp-box bp-toc-box">
+          <h4>In this article</h4>
+          <ul class="bp-toc" id="bpToc">
+            <li><a href="#why">Why schools are moving online</a></li>
+            <li><a href="#plan">Plan before you build</a></li>
+            <li><a href="#paper">Build a fair question paper</a></li>
+            <li><a href="#security">Keep the exam secure</a></li>
+            <li><a href="#day">Run the exam day smoothly</a></li>
+            <li><a href="#after">Use the results well</a></li>
+            <li><a href="#wrap">Final thoughts</a></li>
+          </ul>
+        </div>
+        <div class="bp-box bp-cta">
+          <i class="fa-solid fa-rocket"></i>
+          <h4>Ready to try online exams?</h4>
+          <p>See ExamPro in action with a free live demo for your institution.</p>
+          <a href="#" class="bp-btn nav-cta">Request a demo</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Related -->
+  <section class="bp-rel">
+    <div class="wrap">
+      <h2>You may also like</h2>
+      <div class="bp-grid">
+        <article class="bp-card">
+          <div class="bp-ri"><i class="fa-solid fa-user-shield"></i><img src="assets/img/blog/post1.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="bp-rb"><small>Security</small><h3><a href="blog-post.html">5 Ways to Reduce Cheating in Online Exams</a></h3><span><i class="fa-regular fa-clock"></i> 6 min read</span></div>
+        </article>
+        <article class="bp-card">
+          <div class="bp-ri"><i class="fa-solid fa-scale-balanced"></i><img src="assets/img/blog/post2.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="bp-rb"><small>Exam Tips</small><h3><a href="blog-post.html">Paper vs Online Exams: What Should Your Institute Choose?</a></h3><span><i class="fa-regular fa-clock"></i> 7 min read</span></div>
+        </article>
+        <article class="bp-card">
+          <div class="bp-ri"><i class="fa-solid fa-list-check"></i><img src="assets/img/blog/post7.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="bp-rb"><small>Exam Tips</small><h3><a href="blog-post.html">A Checklist for Your First Online Exam Day</a></h3><span><i class="fa-regular fa-clock"></i> 4 min read</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="bp-toast" id="bpToast">Link copied</div>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <span class="ft-orb"></span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>Exam<span>Pro</span></a>
+        <p class="ft-tag">Secure Exams, Brighter Future</p>
+        <p class="ft-desc">A secure and easy-to-use online examination platform for schools, colleges, coaching institutes and organizations.</p>
+        <form class="ft-news" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="ft-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="features.html"><i class="fa-solid fa-angle-right"></i> Features</a></li>
+          <li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+          <li><a href="about-us.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="ft-contact">
+          <li><span class="ft-ic"><i class="fa-solid fa-phone"></i></span><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-envelope"></i></span><a href="mailto:info@exampro.in">info@exampro.in</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-location-dot"></i></span><span>Noida, Uttar Pradesh, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p class="ft-follow">Stay connected for updates, tips and offers.</p>
+        <div class="footer-social">
+          <a href="#" class="so-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="so-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="so-x" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="so-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ExamPro. All rights reserved.</span>
+      <span class="ft-legal"><a href="privacy-policy.html">Privacy Policy</a><i class="ft-sep"></i><a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+  <a href="#" class="ft-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</footer>
+
+<!-- Demo popup -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Schedule a Demo</h2>
+    <hr class="modal-divider">
+    <form class="demo-form">
+      <div class="field-group"><label>Name</label><input type="text"></div>
+      <div class="field-group"><label>Phone Number</label>
+        <div><select class="country-code"><option>India (91)</option><option>USA (1)</option><option>UK (44)</option></select></div>
+      </div>
+      <div class="field-group"><label>Email</label><input type="email"></div>
+      <div class="field-group"><label>Organisation</label><input type="text"></div>
+      <div class="checkbox-grid">
+        <label class="check-item"><input type="checkbox" name="role"> I have a coaching centre</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a school</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a hospital</label>
+        <label class="check-item"><input type="checkbox" name="role"> Other</label>
+      </div>
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  const demoModal = document.getElementById('demoModal');
+  document.querySelectorAll('.nav-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); demoModal.classList.add('active'); });
+  });
+  document.getElementById('modalClose').addEventListener('click', () => demoModal.classList.remove('active'));
+  demoModal.addEventListener('click', (e) => { if (e.target === demoModal) demoModal.classList.remove('active'); });
+
+  // Reading progress bar (sirf article ke hisaab se)
+  const prog = document.getElementById('bpProg');
+  const art = document.getElementById('bpArt');
+  function onScroll() {
+    const r = art.getBoundingClientRect();
+    const total = r.height - window.innerHeight * 0.5;
+    const done = Math.min(Math.max(-r.top + window.innerHeight * 0.3, 0), total);
+    prog.style.width = (total > 0 ? (done / total) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Contents: current section highlight
+  const links = document.querySelectorAll('#bpToc a');
+  const heads = [...document.querySelectorAll('.bp-art h2[id]')];
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + en.target.id));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    heads.forEach(h => io.observe(h));
+  }
+  links.forEach(l => l.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector(l.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  }));
+
+  // Share buttons (page ka current link use hota hai)
+  const url = encodeURIComponent(location.href);
+  const title = encodeURIComponent(document.title);
+  document.getElementById('shWa').href = 'https://wa.me/?text=' + title + '%20' + url;
+  document.getElementById('shIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+  document.getElementById('shFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+  document.getElementById('shX').href  = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
+
+  const toast = document.getElementById('bpToast');
+  document.getElementById('shCp').addEventListener('click', () => {
+    const done = () => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done);
+    else { const t = document.createElement('input'); t.value = location.href; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); done(); }
+  });
+</script>
+</body>
+</html>
