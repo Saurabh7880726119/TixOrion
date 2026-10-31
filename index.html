@@ -12,10 +12,6 @@
 
 
     <link href="assets/img/logo.png" rel="icon">
-
-
-
-
 </head>
 <body>
 
@@ -588,92 +584,55 @@
     <h2 class="modal-title">Schedule a Demo</h2>
     <hr class="modal-divider">
 
-    
-<form class="demo-form"
-      action="https://formsubmit.co/saurabhkushwaha298@gmail.com"
-      method="POST">
+    <form class="demo-form">
 
-    <input type="hidden" name="_subject"
-           value="New ExamPro Demo Request">
-
-    <input type="hidden" name="_template"
-           value="table">
-
-    <input type="hidden" name="_captcha"
-           value="false">
-
-    <input type="hidden" name="_next"
-           value="https://tixorion.in/thank-you.html">
-
-    <!-- Email Settings -->
-    <input type="hidden" name="_subject"
-           value="New ExamPro Demo Request">
-
-    <input type="hidden" name="_template"
-           value="table">
-
-    <input type="hidden" name="_captcha"
-           value="true">
-
-    <div class="field-group">
+      <div class="field-group">
         <label>Name</label>
-        <input type="text" name="Name"
-               placeholder="Enter your name" required>
-    </div>
+        <input type="text" placeholder="">
+      </div>
 
-    <div class="field-group">
+      <div class="field-group">
         <label>Phone Number</label>
-        <select class="country-code" name="Country_Code">
-            <option value="+91">India (+91)</option>
-            <option value="+1">USA (+1)</option>
-            <option value="+44">UK (+44)</option>
-        </select>
+       
+        <div >
+          <select class="country-code">
+            <option>India (91)</option>
+            <option>USA (1)</option>
+            <option>UK (44)</option>
+          </select>
+        </div>
+      </div>
 
-        <input type="tel" name="Phone"
-               placeholder="Enter phone number"
-               pattern="[0-9]{7,15}" required>
-    </div>
-
-    <div class="field-group">
+      <div class="field-group">
         <label>Email</label>
-        <input type="email" name="Email"
-               placeholder="Enter email" required>
-    </div>
+        <input type="email" placeholder="">
+      </div>
 
-    <div class="field-group">
+      <div class="field-group">
         <label>Organisation</label>
-        <input type="text" name="Organisation"
-               placeholder="Enter organisation name" required>
-    </div>
+        <input type="text" placeholder="">
+      </div>
 
-    <div class="checkbox-grid">
-
+      <div class="checkbox-grid">
         <label class="check-item">
-            <input type="checkbox" name="Institution[]"
-                   value="Coaching Centre">
-            I have a coaching centre
+          <input type="checkbox" name="role"> I have a coaching centre
         </label>
-
         <label class="check-item">
-            <input type="checkbox" name="Institution[]"
-                   value="School">
-            I have a school
+          <input type="checkbox" name="role"> I have a school
         </label>
-
+        <!-- <label class="check-item">
+          <input type="checkbox" name="role"> I have a hospital
+        </label> -->
         <label class="check-item">
-            <input type="checkbox" name="Institution[]"
-                   value="Other">
-            Other
+          <input type="checkbox" name="role"> Other
         </label>
+      </div>
 
-    </div>
+      
 
-    <button type="submit" class="btn-submit">
-        Submit
-    </button>
+      <button type="submit" class="btn-submit">Submit</button>
 
-</form>
-
+    </form>
   </div>
 </div>
 
