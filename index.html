@@ -1,489 +1,723 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tixorion Technologies Pvt. Ltd. – Powering Digital Intelligence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* HERO */
-    #hero {
-      position: relative; min-height: 100vh; display: flex;
-      align-items: center; justify-content: center; text-align: center;
-      overflow: hidden; padding: 100px 5% 60px;
-    }
-    #particle-canvas { position: absolute; inset: 0; z-index: 0; }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59, 158, 255, .12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, .1) 0%, transparent 60%);
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 860px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(59, 158, 255, .1); border: 1px solid rgba(59, 158, 255, .3);
-      padding: 8px 18px; border-radius: 50px; font-size: .8rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue);
-      margin-bottom: 28px; animation: fadeDown .8s ease both;
-    }
-    .hero-badge span { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
-    .hero-title { font-family: 'Orbitron', monospace; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; animation: fadeUp .9s ease .2s both; }
-    .hero-title span { background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-tagline { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--muted); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; animation: fadeUp .9s ease .3s both; }
-    .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 640px; margin: 0 auto 40px; animation: fadeUp .9s ease .4s both; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp .9s ease .5s both; }
-    .hero-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 64px; animation: fadeUp .9s ease .7s both; }
-    .stat { text-align: center; }
-    .stat-num { font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .stat-label { font-size: .8rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamPro - Secure Exams, Brighter Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 
-    /* SERVICES PREVIEW */
-    #services-preview { background: var(--dark2); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; transition: all .4s; position: relative; overflow: hidden; }
-    .service-card::before { content: ''; position: absolute; inset: 0; opacity: 0; background: linear-gradient(135deg, rgba(59, 158, 255, .07), rgba(124, 58, 237, .07)); transition: opacity .4s; }
-    .service-card:hover { border-color: rgba(59, 158, 255, .3); transform: translateY(-6px); }
-    .service-card:hover::before { opacity: 1; }
-    .service-icon { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; background: linear-gradient(135deg, rgba(59, 158, 255, .15), rgba(124, 58, 237, .15)); border: 1px solid rgba(59, 158, 255, .2); }
-    .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
-    .service-card p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
-    .view-all-wrap { text-align: center; margin-top: 40px; }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    /* WHY US PREVIEW */
-    #why-preview { background: var(--dark3); }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .why-features { display: flex; flex-direction: column; gap: 28px; }
-    .why-item { display: flex; gap: 16px; align-items: flex-start; }
-    .why-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: linear-gradient(135deg, rgba(59, 158, 255, .2), rgba(124, 58, 237, .2)); border: 1px solid rgba(59, 158, 255, .25); }
-    .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-    .why-item p { color: var(--muted); font-size: .88rem; line-height: 1.7; }
-    .orbit-visual { position: relative; width: 320px; height: 320px; margin: 0 auto; }
-    .orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 0 40px rgba(59, 158, 255, .4); animation: orbit-pulse 3s ease-in-out infinite; }
-    .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(59, 158, 255, .2); transform: translate(-50%, -50%); }
-    .orbit-ring-1 { width: 160px; height: 160px; animation: spin 8s linear infinite; }
-    .orbit-ring-2 { width: 240px; height: 240px; animation: spin 14s linear infinite reverse; }
-    .orbit-ring-3 { width: 320px; height: 320px; animation: spin 20s linear infinite; }
-    .orbit-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); top: -5px; left: 50%; margin-left: -5px; box-shadow: 0 0 10px var(--blue); }
-    .orbit-dot-2 { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
-    .orbit-dot-3 { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
 
-    /* TEAM PREVIEW */
-    #team-preview { background: var(--dark); }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
-    .team-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .4s; text-align: center; }
-    .team-card:hover { border-color: rgba(59, 158, 255, .4); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 158, 255, .12); }
-    .team-img-wrap { position: relative; overflow: hidden; height: 220px; }
-    .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; filter: grayscale(20%); }
-    .team-card:hover .team-img-wrap img { transform: scale(1.07); filter: grayscale(0%); }
-    .team-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 7, 15, .85) 0%, transparent 55%); }
-    .team-social { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; opacity: 0; transition: opacity .3s; }
-    .team-card:hover .team-social { opacity: 1; }
-    .team-social a { width: 30px; height: 30px; border-radius: 6px; background: rgba(59, 158, 255, .2); border: 1px solid rgba(59, 158, 255, .4); display: flex; align-items: center; justify-content: center; color: var(--blue); text-decoration: none; font-size: .75rem; transition: background .2s; }
-    .team-social a:hover { background: rgba(59, 158, 255, .4); }
-    .team-info { padding: 18px 16px 22px; }
-    .team-name { font-weight: 700; font-size: 1rem; margin-bottom: 5px; }
-    .team-designation { font-size: .8rem; color: var(--blue); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 8px; }
-    .team-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
-
-    /* TESTIMONIALS */
-    #testimonials { background: var(--dark3); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .testi-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .3s; }
-    .testi-card:hover { border-color: rgba(59, 158, 255, .25); transform: translateY(-4px); }
-    .stars { color: #f59e0b; margin-bottom: 14px; letter-spacing: 2px; }
-    .testi-text { color: var(--muted); font-size: .93rem; line-height: 1.8; margin-bottom: 20px; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
-    .testi-name { font-weight: 600; font-size: .95rem; }
-    .testi-role { color: var(--muted); font-size: .8rem; }
-
-    /* CTA STRIP */
-    #cta-strip { background: linear-gradient(135deg, rgba(59, 158, 255, .12), rgba(124, 58, 237, .15)); border-top: 1px solid rgba(59, 158, 255, .15); border-bottom: 1px solid rgba(59, 158, 255, .15); padding: 70px 5%; text-align: center; }
-    #cta-strip h2 { font-family: 'Orbitron', monospace; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 14px; }
-    #cta-strip p { color: var(--muted); margin-bottom: 32px; font-size: 1rem; }
-
-    @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } .orbit-visual { display: none; } }
-    @media (max-width: 600px) { .hero-stats { gap: 24px; } }
-  </style>
+    <link href="assets/img/logo.png" rel="icon">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo/tttttttttnew.png" alt="Tixorion Logo">
-    </a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="technologies.html">Technologies</a></li>
-      <li><a href="process.html">Process</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Get a Quote</a>
-    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="services.html" onclick="toggleMenu()">Services</a>
-    <a href="about.html" onclick="toggleMenu()">About</a>
-    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
-    <a href="process.html" onclick="toggleMenu()">Process</a>
-    <a href="team.html" onclick="toggleMenu()">Team</a>
-    <a href="contact.html" onclick="toggleMenu()">Contact</a>
-    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
-  </div>
+<header>
+  <div class="nav-wrap">
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="ExamPro Logo" class="logo-img">
+    </div>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <canvas id="particle-canvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-badge"><span></span> Next-Gen IT Solutions</div>
-      <h1 class="hero-title">Building the Future<br>with <span>Digital Intelligence</span></h1>
-      <p class="hero-tagline">Powering Digital Intelligence</p>
-      <p class="hero-desc">Tixorion Technologies delivers cutting-edge software development, AI solutions, and cloud services that transform businesses and accelerate growth in the digital era.</p>
+    <nav class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
+      <!-- ye button sirf mobile menu ke andar dikhega -->
+      <button class="btn btn-primary nav-cta nav-cta-mobile">
+        Schedule a Demo <span class="btn-arrow">→</span>
+      </button>
+    </nav>
+
+    <!-- ye original button sirf desktop par dikhega -->
+    <button class="btn btn-primary nav-cta nav-cta-desktop">
+      Schedule a Demo <span class="btn-arrow">→</span>
+    </button>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">SMART • SECURE • RELIABLE</div>
+      <h1>A Complete<br><span class="accent">Online Exam Portal</span><br>for a Digital Future</h1>
+      <p>Conduct exams anytime, anywhere with our powerful, secure and easy to use online examination system. Trusted by schools, colleges, coaching institutes and organizations.</p>
       <div class="hero-btns">
-        <a href="services.html" class="btn-primary">Explore Services</a>
-        <a href="contact.html" class="btn-outline">Start a Project →</a>
+        <button class="btn btn-primary nav-cta nav-cta-desktop">Get Started →</button>
+        <button class="btn btn-outline">▶ Watch Demo</button>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
-        <div class="stat"><div class="stat-num">80+</div><div class="stat-label">Happy Clients</div></div>
-        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
-        <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Guarantee</div></div>
+      <div class="hero-feats">
+        <div class="hero-feat"><div class="feat-icon fi-green"><i class="fa-solid fa-shield-halved"></i></i></div>100% Secure</div>
+        <div class="hero-feat"><div class="feat-icon fi-purple"><i class="fa-solid fa-gear"></i></div>Easy to Use</div>
+        <div class="hero-feat"><div class="feat-icon fi-blue"> <i class="fa-solid fa-file"></i></i></div>Reliable & Scalable</div>
+        <div class="hero-feat"><div class="feat-icon fi-teal"><i class="fa-solid fa-headphones"></i></div>Dedicated Support</div>
       </div>
     </div>
-  </section>
+    <div class="hero-visual">
+      <div class="laptop">
+        <div class="laptop-screen laptop-screen--slider">
+          <div class="slider" id="heroSlider">
+            <div class="slide active"><img src="assets/img/slider1.webp" alt="ExamPro Dashboard"></div>
+            <div class="slide"><img src="assets/img/slider2.jpeg" alt="ExamPro Exam Screen"></div>
+            <div class="slide"><img src="assets/img/slider1.webp" alt="ExamPro Reports"></div>
+          </div>
+          <div class="slider-dots" id="sliderDots"></div>
+        </div>
+        <div class="laptop-base"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- SERVICES PREVIEW -->
-  <section id="services-preview">
-    <div class="section-header">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Our <span>Core Services</span></h2>
-      <p class="section-desc">End-to-end technology solutions designed to accelerate your business growth and digital transformation journey.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon">🌐</div><h3>Web Development</h3><p>Custom, responsive websites and powerful web applications built with modern frameworks like React, Vue, and Node.js.</p></div>
-      <div class="service-card"><div class="service-icon">📱</div><h3>Mobile App Development</h3><p>Native and cross-platform mobile apps for iOS and Android using Flutter and React Native.</p></div>
-      <div class="service-card"><div class="service-icon">🤖</div><h3>AI & Machine Learning</h3><p>Intelligent automation, predictive analytics, NLP, and computer vision solutions.</p></div>
-      <div class="service-card"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure, migration, and DevOps services on AWS, Azure, and GCP.</p></div>
-      <div class="service-card"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Comprehensive security audits, penetration testing, threat monitoring, and compliance solutions.</p></div>
-      <div class="service-card"><div class="service-icon">🎨</div><h3>UI/UX Design</h3><p>Human-centered design research, wireframing, prototyping, and visual design.</p></div>
-    </div>
-    <div class="view-all-wrap">
-      <a href="services.html" class="btn-outline" style="margin-top:8px;">View All Services →</a>
-    </div>
-  </section>
+<section class="stats-bar">
+  <div class="stats-wave">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,60 L0,30 C300,0 900,60 1200,10 L1200,60 Z" fill="#ffffff"></path>
+    </svg>
+  </div>
 
-  <!-- WHY US PREVIEW -->
-  <section id="why-preview">
-    <div class="why-grid">
+  <div class="stats-marquee">
+    <div class="stats-track">
+      <!-- Set 1 -->
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Support</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span> Years</div>
+        <div class="stat-lbl">Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">710<span>+</span></div>
+        <div class="stat-lbl">Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">28<span>+</span> States</div>
+        <div class="stat-lbl">Pan India</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20<span>+</span> Countries</div>
+        <div class="stat-lbl">Global Presence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10<span>K+</span></div>
+        <div class="stat-lbl">Users</div>
+      </div>
+
+      <!-- Set 2 (duplicate, seamless loop ke liye) -->
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Support</div>
+      </div>
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">10<span>+</span> Years</div>
+        <div class="stat-lbl">Experience</div>
+      </div>
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">710<span>+</span></div>
+        <div class="stat-lbl">Clients</div>
+      </div>
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">28<span>+</span> States</div>
+        <div class="stat-lbl">Pan India</div>
+      </div>
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">20<span>+</span> Countries</div>
+        <div class="stat-lbl">Global Presence</div>
+      </div>
+      <div class="stat-item" aria-hidden="true">
+        <div class="stat-num">10<span>K+</span></div>
+        <div class="stat-lbl">Users</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section feat-section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">FEATURES</div>
+      <h2>Our Features</h2>
+      <p class="feat-sub">Everything You Need for Seamless Exam Management</p>
+    </div>
+
+    <div class="feat-grid">
+
+      <div class="feat-card fc-green">
+        <div class="feat-icon-lg"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Secure &amp; Robust</h3>
+        <p>Anti-cheating measures</p>
+      </div>
+
+      <div class="feat-card fc-orange">
+        <div class="feat-icon-lg"><i class="fa-solid fa-file-pen"></i></div>
+        <h3>Flexible Exam Creation</h3>
+        <p>MCQ, Descriptive, Mixed</p>
+      </div>
+
+      <div class="feat-card fc-blue">
+        <div class="feat-icon-lg"><i class="fa-solid fa-square-poll-vertical"></i></div>
+        <h3>Automatic Evaluation</h3>
+        <p>Instant results &amp; reports</p>
+      </div>
+
+      <div class="feat-card fc-red">
+        <div class="feat-icon-lg"><i class="fa-solid fa-user-shield"></i></div>
+        <h3>Role Based Access</h3>
+        <p>Admin, Institute, Student</p>
+      </div>
+
+      <div class="feat-card fc-purple">
+        <div class="feat-icon-lg"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3>Detailed Analytics</h3>
+        <p>Performance insights</p>
+      </div>
+
+      <div class="feat-card fc-teal">
+        <div class="feat-icon-lg"><i class="fa-solid fa-laptop-mobile"></i></div>
+        <h3>Multi-device Support</h3>
+        <p>Desktop, Tablet, Mobile</p>
+      </div>
+
+      <div class="feat-card fc-amber">
+        <div class="feat-icon-lg"><i class="fa-solid fa-database"></i></div>
+        <h3>Question Bank</h3>
+        <p>Organize &amp; reuse questions</p>
+      </div>
+
+      <div class="feat-card fc-pink">
+        <div class="feat-icon-lg"><i class="fa-solid fa-palette"></i></div>
+        <h3>Custom Branding</h3>
+        <p>Your logo, your identity</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section why">
+  <div class="container why-grid">
+
+    <!-- Left content -->
+    <div class="why-content">
+      <div class="why-eyebrow">WHY CHOOSE TIXORION</div>
+      <h2>Built for Education, <span>Designed for You</span></h2>
+      <p class="why-desc">
+        Our platform is designed to simplify the examination process while ensuring fairness, security and accuracy.
+      </p>
+
+      <ul class="check-list">
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>User-friendly interface</li>
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>Secure online proctoring</li>
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>Real-time monitoring</li>
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>Detailed performance reports</li>
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>Cost-effective &amp; scalable</li>
+        <li><div class="check-icon"><i class="fa-solid fa-check"></i></div>Dedicated customer support</li>
+      </ul>
+
+      <a href="about-us.html" class="why-btn">
+        Know More <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- Right visual -->
+    <div class="why-visual">
+      <div class="why-frame"></div>
+      <div class="why-dots"></div>
+
+      <div class="why-img">
+        <img src="assets/img/whychoiseus.webp" alt="Why Choose TixOrion">
+      </div>
+
+      <div class="quote-card">
+        <i class="fa-solid fa-quote-left"></i>
+        <p>Assess Today, Build a Better Tomorrow</p>
+      </div>
+
+      <div class="quote-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section how-section" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">HOW IT WORKS</div>
+      <h2>Get Started in 3 Simple Steps</h2>
+    </div>
+
+    <div class="steps-row">
+      <div class="step st-1">
+        <div class="step-circle">
+          <i class="fa-solid fa-users-gear"></i>
+          <span class="step-badge">1</span>
+        </div>
+        <h3>Create</h3>
+        <p>Set up your organization, add users and create exams.</p>
+      </div>
+
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+      <div class="step st-2">
+        <div class="step-circle">
+          <i class="fa-solid fa-laptop-code"></i>
+          <span class="step-badge">2</span>
+        </div>
+        <h3>Conduct</h3>
+        <p>Students appear for exams securely from anywhere.</p>
+      </div>
+
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+      <div class="step st-3">
+        <div class="step-circle">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="step-badge">3</span>
+        </div>
+        <h3>Analyze</h3>
+        <p>View results, reports and insights instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section trust-section" style="padding-top:20px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">FOR EVERY LEARNING NEED</div>
+      <h2>Trusted by Educational Institutions &amp; Organizations</h2>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card tc-1">
+        <div class="ic"><i class="fa-solid fa-school"></i></div>
+        <h3>Schools</h3>
+        <p>Class tests, term exams and more</p>
+        <span class="trust-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+
+      <div class="trust-card tc-2">
+        <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Colleges</h3>
+        <p>Internal &amp; external examinations</p>
+        <span class="trust-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+
+      <div class="trust-card tc-3">
+        <div class="ic"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3>Coaching Institutes</h3>
+        <p>Mock tests &amp; practice exams</p>
+        <span class="trust-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+
+      <div class="trust-card tc-4">
+        <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Organizations</h3>
+        <p>Recruitment &amp; assessment tests</p>
+        <span class="trust-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">OUR CLIENTS</div>
+      <h2>What Our Clients Say</h2>
+    </div>
+  </div>
+
+  <div class="test-marquee">
+    <div class="test-track">
+      <!-- Set 1 -->
+      <div class="test-card">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"ExamPro has made our examination process so easy and efficient. Highly recommended!"</p>
+        <div class="test-person">
+          <div class="avatar">RS</div>
+          <div><h4>Rakesh Sharma</h4><span>School Principal</span></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"The platform is secure, reliable and very user-friendly. Our students love it!"</p>
+        <div class="test-person">
+          <div class="avatar">NV</div>
+          <div><h4>Neha Verma</h4><span>Coaching Institute Head</span></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"Excellent support and features. It saved us a lot of time and effort in conducting exams."</p>
+        <div class="test-person">
+          <div class="avatar">AK</div>
+          <div><h4>Amit Kumar</h4><span>HR Manager</span></div>
+        </div>
+      </div>
+
+      <!-- Set 2 (duplicate, seamless loop ke liye) -->
+      <div class="test-card" aria-hidden="true">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"ExamPro has made our examination process so easy and efficient. Highly recommended!"</p>
+        <div class="test-person">
+          <div class="avatar">RS</div>
+          <div><h4>Rakesh Sharma</h4><span>School Principal</span></div>
+        </div>
+      </div>
+      <div class="test-card" aria-hidden="true">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"The platform is secure, reliable and very user-friendly. Our students love it!"</p>
+        <div class="test-person">
+          <div class="avatar">NV</div>
+          <div><h4>Neha Verma</h4><span>Coaching Institute Head</span></div>
+        </div>
+      </div>
+      <div class="test-card" aria-hidden="true">
+        <div class="test-quote">&ldquo;</div>
+        <div class="test-stars">★★★★★</div>
+        <p>"Excellent support and features. It saved us a lot of time and effort in conducting exams."</p>
+        <div class="test-person">
+          <div class="avatar">AK</div>
+          <div><h4>Amit Kumar</h4><span>HR Manager</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="padding:20px 0 60px;">
+  <div class="container">
+    <div class="cta">
+
+      <!-- Decorative shapes -->
+      <span class="cta-orb cta-orb-1"></span>
+      <span class="cta-orb cta-orb-2"></span>
+      <span class="cta-dots"></span>
+
+      <div class="cta-grid">
+
+        <!-- Left content -->
+        <div class="cta-content">
+          <div class="cta-tag"><i class="fa-solid fa-rocket"></i> GET STARTED TODAY</div>
+          <h2>Ready to Go <span>Digital</span> with Your Examinations?</h2>
+          <p>Join hundreds of institutions already using ExamPro.</p>
+
+          <div class="cta-btns">
+            <!-- <a href="contact.html" class="cta-btn cta-btn-main">
+              <i class="fa-solid fa-calendar-check"></i> Request Demo
+            </a> -->
+
+             <button class="btn btn-primary nav-cta nav-cta-desktop">Request Demo →</button>
+            <a href="contact.html" class="cta-btn cta-btn-ghost">
+              Contact Us <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right features -->
+        <div class="cta-feats">
+          <div class="cta-feat">
+            <div class="ci"><i class="fa-solid fa-bolt"></i></div>
+            <span>Fast Setup</span>
+          </div>
+          <div class="cta-feat">
+            <div class="ci"><i class="fa-solid fa-gift"></i></div>
+            <span>Free Demo</span>
+          </div>
+          <div class="cta-feat">
+            <div class="ci"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <span>Affordable Plans</span>
+          </div>
+          <div class="cta-feat">
+            <div class="ci"><i class="fa-solid fa-headset"></i></div>
+            <span>Dedicated Support</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq-section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">FREQUENTLY ASKED QUESTIONS</div>
+      <h2>Have Questions? We've Got Answers</h2>
+    </div>
+
+    <div class="faq-wrap">
+
+      <!-- Accordion -->
+      <div class="faq-list">
+
+        <div class="faq-item active">
+          <button class="faq-q" type="button" aria-expanded="true">
+            <span class="faq-num"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="faq-text">Is the platform secure?</span>
+            <span class="faq-plus"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes, ExamPro uses industry-standard encryption and anti-cheating measures to keep every exam secure.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-num"><i class="fa-solid fa-laptop-file"></i></span>
+            <span class="faq-text">Can I conduct both online and offline exams?</span>
+            <span class="faq-plus"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes, ExamPro supports both fully online exams and hybrid offline-online formats.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-num"><i class="fa-solid fa-headset"></i></span>
+            <span class="faq-text">Do you provide technical support?</span>
+            <span class="faq-plus"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Our dedicated support team is available to help you before, during and after every exam.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-num"><i class="fa-solid fa-display"></i></span>
+            <span class="faq-text">Can I get a demo before purchasing?</span>
+            <span class="faq-plus"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Absolutely, you can request a free live demo anytime from our team.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Help card -->
+      <div class="faq-help">
+        <div class="icon-circle"><i class="fa-solid fa-headset"></i></div>
+        <h3>Still have questions?</h3>
+        <p>Our team is here to help you.</p>
+        <a href="contact.html" class="faq-btn">Contact Support <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="ft-orb"></span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>Exam<span>Pro</span></a>
+        <p class="ft-tag">Secure Exams, Brighter Future</p>
+        <p class="ft-desc">A secure and easy-to-use online examination platform for schools, colleges, coaching institutes and organizations.</p>
+        <form class="ft-news" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
       <div>
-        <div class="section-label">Why Choose Us</div>
-        <h2 class="section-title">We Build Solutions<br>That <span>Actually Work</span></h2>
-        <p class="section-desc" style="margin-bottom: 36px;">At Tixorion, we combine deep technical expertise with a client-first approach to deliver software that creates real business value.</p>
-        <div class="why-features">
-          <div class="why-item"><div class="why-icon">🏆</div><div><h4>Expert Engineering Team</h4><p>Certified engineers with 5–12 years of experience across diverse domains.</p></div></div>
-          <div class="why-item"><div class="why-icon">⚡</div><div><h4>Agile & Fast Delivery</h4><p>Iterative development sprints ensuring faster time-to-market without sacrificing quality.</p></div></div>
-          <div class="why-item"><div class="why-icon">🛡️</div><div><h4>Security First Approach</h4><p>Every solution is built with security best practices embedded from the ground up.</p></div></div>
-          <div class="why-item"><div class="why-icon">🤝</div><div><h4>Transparent Communication</h4><p>Real-time project tracking, weekly reporting, and dedicated account managers.</p></div></div>
+        <h4>Quick Links</h4>
+        <ul class="ft-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="features.html"><i class="fa-solid fa-angle-right"></i> Features</a></li>
+          <li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li>
+          <li><a href="about-us.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="ft-contact">
+          <li><span class="ft-ic"><i class="fa-solid fa-phone"></i></span><a href="tel:+919876543210">+91 78807 26119</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-envelope"></i></span><a href="mailto:info@exampro.in">info@exampro.in</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-location-dot"></i></span><span>Noida, Uttar Pradesh, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p class="ft-follow">Stay connected for updates, tips and offers.</p>
+        <div class="footer-social">
+          <a href="#" class="so-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="so-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="so-x" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="so-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <div style="margin-top:32px;"><a href="about.html" class="btn-outline">Learn More About Us →</a></div>
-      </div>
-      <div class="orbit-visual">
-        <div class="orbit-center">💻</div>
-        <div class="orbit-ring orbit-ring-1"><div class="orbit-dot"></div></div>
-        <div class="orbit-ring orbit-ring-2"><div class="orbit-dot orbit-dot-2"></div></div>
-        <div class="orbit-ring orbit-ring-3"><div class="orbit-dot orbit-dot-3"></div></div>
       </div>
     </div>
-  </section>
-
-  <!-- TEAM PREVIEW -->
-  <section id="team-preview">
-    <div class="section-header">
-      <div class="section-label">The People Behind</div>
-      <h2 class="section-title">Meet Our <span>Expert Team</span></h2>
-      <p class="section-desc">A passionate group of engineers, designers, and strategists working together to deliver extraordinary digital solutions.</p>
-    </div>
-   <div class="team-grid">
-
-
-       <div class="team-card">
-    <div class="team-img-wrap">
-      <!-- <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Neha Shakya"> -->
-        <img src="image/nnnnnnnn.jpeg" alt="Neha Shakya">
-      <div class="team-img-overlay"></div>
-      <div class="team-social">
-        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-      </div>
-    </div>
-    <div class="team-info">
-      <div class="team-name">Neha Shakya</div>
-      <div class="team-designation">Co-Founder & Chief Technology Officer (CTO)</div>
-      <div class="team-desc">Technology strategist leading scalable systems, AI platforms and advanced product development.</div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ExamPro. All rights reserved.</span>
+      <span class="ft-legal"><a href="privacy-policy.html">Privacy Policy</a><i class="ft-sep"></i><a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
     </div>
   </div>
+  <a href="#" class="ft-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</footer>
 
 
-     <div class="team-card">
-    <div class="team-img-wrap">
-      <img src="image/ooooo.jpeg" alt="Saurabh Kushwaha">
-      <div class="team-img-overlay"></div>
-      <div class="team-social">
-        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+<!-- header popup form -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Schedule a Demo</h2>
+    <hr class="modal-divider">
+
+    <form class="demo-form">
+
+      <div class="field-group">
+        <label>Name</label>
+        <input type="text" placeholder="">
       </div>
-    </div>
-    <div class="team-info">
-      <div class="team-name">Saurabh Kushwaha</div>
-      <!-- <div class="team-designation">Co-Founder & Chief Executive Officer (CEO)</div> -->
-        <div class="team-designation">Dot Net Developer</div>
-      <div class="team-desc">Visionary leader driving company strategy, innovation and global digital transformation initiatives.</div>
-    </div>
-  </div>
 
-
-        <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/rajkumarimage.png" alt="Vikram Nair">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Rajkumar</div>
-          <div class="team-designation">Mobile Developer</div>
-          <div class="team-desc">Flutter & React Native specialist delivering seamless cross-platform mobile apps.</div>
+      <div class="field-group">
+        <label>Phone Number</label>
+       
+        <div >
+          <select class="country-code">
+            <option>India (91)</option>
+            <option>USA (1)</option>
+            <option>UK (44)</option>
+          </select>
         </div>
       </div>
 
-
-             <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/pankajimage.jpeg" alt="Karan Singh">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Pankaj</div>
-          <div class="team-designation">Software Engineer</div>
-          <div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.
-          </div>
-        </div>
+      <div class="field-group">
+        <label>Email</label>
+        <input type="email" placeholder="">
       </div>
 
-
-         <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/akashimage.png" alt="Karan Singh">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Akash</div>
-          <div class="team-designation">AI/ML Engineer</div>
-          <div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.
-          </div>
-        </div>
+      <div class="field-group">
+        <label>Organisation</label>
+        <input type="text" placeholder="">
       </div>
 
-        
-       <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/shaliniimage.png" alt="Sneha Gupta">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Shalini</div>
-          <div class="team-designation">Head of Design</div>
-          <div class="team-desc">Award-winning UI/UX designer crafting intuitive, user-centered digital experiences.
-          </div>
-        </div>
-      </div>
-
-         <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/prashantimage.png" alt="Riya Joshi">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Prashant</div>
-          <div class="team-designation">Dot Net Developer</div>
-          <div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div>
-        </div>
-      </div>
-
-
-           <div class="team-card">
-    <div class="team-img-wrap">
-      <img src="image/abhiimage.jpeg" alt="Gaurav Kushwaha">
-      <div class="team-img-overlay"></div>
-      <div class="team-social">
-        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-      </div>
-    </div>
-    <div class="team-info">
-      <div class="team-name">Abhishek Rawat</div>
-      <div class="team-designation">Graphic Designer</div>
-      <div class="team-desc">  Creative graphic designer specializing in branding, logo design, and visual storytelling to enhance brand identity and user engagement.</div>
-    </div>
-  </div>
-
-
-     <div class="team-card">
-    <div class="team-img-wrap">
-      <img src="image/gauravnewimage.png" alt="Gaurav Kushwaha">
-      <div class="team-img-overlay"></div>
-      <div class="team-social">
-        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-      </div>
-    </div>
-    <div class="team-info">
-      <div class="team-name">Gaurav Kushwaha</div>
-      <div class="team-designation">Digital Marketing Manager</div>
-      <div class="team-desc">Specialist in SEO, social media marketing and digital growth strategies helping brands scale online.</div>
-    </div>
-  </div>
-
-
-
-     
- <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/kalpeshimage.png" alt="Ananya Mishra">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Kalpesh</div>
-          <div class="team-designation">DevOps Engineer</div>
-          <div class="team-desc">Cloud infrastructure expert managing CI/CD pipelines on AWS, Azure & GCP.</div>
-        </div>
+      <div class="checkbox-grid">
+        <label class="check-item">
+          <input type="checkbox" name="role"> I have a coaching centre
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="role"> I have a school
+        </label>
+        <!-- <label class="check-item">
+          <input type="checkbox" name="role"> I have a hospital
+        </label> -->
+        <label class="check-item">
+          <input type="checkbox" name="role"> Other
+        </label>
       </div>
 
       
 
-     
+      <button type="submit" class="btn-submit">Submit</button>
 
-   
+    </form>
+  </div>
+</div>
 
-      <div class="team-card">
-        <div class="team-img-wrap">
-          <img src="image/shivamimage.png" alt="Riya Joshi">
-          <div class="team-img-overlay"></div>
-          <div class="team-social">
-            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Shivam Prabhakar</div>
-          <div class="team-designation">Project Manager</div>
-          <div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div>
-        </div>
-      </div>
 
-     
 
-    </div>
-    <div class="view-all-wrap"><a href="team.html" class="btn-outline" style="margin-top:8px;">Meet the Full Team →</a></div>
-  </section>
+<script>
+ const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="section-header">
-      <div class="section-label">Client Stories</div>
-      <h2 class="section-title">What Our <span>Clients Say</span></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Tixorion delivered our e-commerce platform 2 weeks ahead of schedule. The quality of code and attention to detail was exceptional."</p><div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rahul Sharma</div><div class="testi-role">CEO, RetailPlus India</div></div></div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"The AI-powered analytics dashboard they built reduced our reporting time by 80%. The team was responsive, professional, and incredibly skilled."</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Mehta</div><div class="testi-role">CTO, FinTechWave</div></div></div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Outstanding work on our mobile app! Over 50,000 downloads in the first month. Tixorion's expertise in Flutter and UX design made all the difference."</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Arjun Patel</div><div class="testi-role">Founder, HealthTrack App</div></div></div></div>
-    </div>
-  </section>
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+});
+  // Hero image slider
+  (function(){
+    const slider = document.getElementById('heroSlider');
+    const dotsWrap = document.getElementById('sliderDots');
+    if(!slider) return;
+    const slides = slider.querySelectorAll('.slide');
+    let current = 0;
 
-  <!-- CTA STRIP -->
-  <section id="cta-strip">
-    <h2>Ready to Build Something <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Extraordinary?</span></h2>
-    <p>Let's discuss your project and turn your vision into a powerful digital reality.</p>
-    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Start Your Project Today →</a>
-  </section>
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.dot');
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="image/logo/tttttttttnew.png" alt="Tixorion Logo">
-        <p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p>
-        <div class="social-links" style="margin-top:20px;">
-          <a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a>
-          <a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Services</h4><ul>
-        <li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li>
-        <li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li>
-        <li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Company</h4><ul>
-        <li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li>
-        <li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li>
-        <li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-      </ul></div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p>
-      <p>Powering Digital Intelligence</p>
-    </div>
-  </footer>
-
-  <script>
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-    for (let i = 0; i < 80; i++) {
-      particles.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3, r: Math.random() * 1.5 + .5, o: Math.random() * .5 + .1 });
+    function goTo(index){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
     }
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59,158,255,${p.o})`; ctx.fill();
+
+    setInterval(() => {
+      goTo((current + 1) % slides.length);
+    }, 3000);
+  })();
+</script>
+
+<script>
+const navCtaButtons = document.querySelectorAll('.nav-cta');
+const demoModal = document.getElementById('demoModal');
+const modalClose = document.getElementById('modalClose');
+
+navCtaButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    demoModal.classList.add('active');
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  demoModal.classList.remove('active');
+});
+
+demoModal.addEventListener('click', (e) => {
+  if (e.target === demoModal) {
+    demoModal.classList.remove('active');
+  }
+});
+</script>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('active');
+
+      // Pehle sab band karo (ek time par ek hi open rahega)
+      document.querySelectorAll('.faq-item').forEach(function (i) {
+        i.classList.remove('active');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       });
-      particles.forEach((p, i) => {
-        for (let j = i + 1; j < particles.length; j++) {
-          const d = Math.hypot(p.x - particles[j].x, p.y - particles[j].y);
-          if (d < 100) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(59,158,255,${.08 * (1 - d / 100)})`; ctx.stroke(); }
-        }
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-  </script>
+
+      // Agar ye pehle band tha to ab kholo
+      if (!isOpen) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
