@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team - ExamPro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="assets/img/logo.png" rel="icon">
+
+<style>
+/* ===== Team page (sirf is page ke liye) ===== */
+.tm { --brand:#ee4d1f; --brand-2:#ff8a5c; --blue:#2f6bff; --navy:#12203f; --muted:#5d6a85; font-family:'Poppins',sans-serif; color:var(--navy); }
+.tm section { padding:84px 0; }
+.tm .wrap { width:min(1160px,92%); margin:0 auto; }
+.tm h2 { margin:0 0 14px; font-size:38px; line-height:1.2; font-weight:700; }
+.tm p { margin:0 0 14px; color:var(--muted); font-size:16px; line-height:1.8; }
+.tm-tag { display:inline-block; padding:6px 16px; margin-bottom:16px; font-size:13px; font-weight:600; color:var(--brand); background:rgba(238,77,31,.10); border-radius:50px; }
+.tm-head { text-align:center; max-width:680px; margin:0 auto 40px; }
+
+/* ---------- Banner ---------- */
+.tm-banner { position:relative; overflow:hidden; padding:96px 0 110px !important; text-align:center; color:#fff; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); }
+.tm-banner::before { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.14) 1.5px,transparent 1.5px); background-size:26px 26px; -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%); mask-image:linear-gradient(180deg,#000,transparent 85%); }
+.tm-banner .orb { position:absolute; border-radius:50%; }
+.tm-banner .o1 { width:420px; height:420px; right:-120px; top:-180px; background:radial-gradient(circle,rgba(255,138,92,.5),transparent 70%); }
+.tm-banner .o2 { width:360px; height:360px; left:-120px; bottom:-200px; background:radial-gradient(circle,rgba(122,162,255,.45),transparent 70%); }
+.tm-banner .wrap { position:relative; z-index:1; }
+.tm-banner h1 { margin:0 0 16px; font-size:54px; line-height:1.15; font-weight:800; }
+.tm-banner h1 span { background:linear-gradient(90deg,#ffb08f,#ff6a3d); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.tm-banner p { max-width:620px; margin:0 auto 24px; color:rgba(255,255,255,.86); }
+.tm-crumb { font-size:14px; color:rgba(255,255,255,.8); }
+.tm-crumb a { color:#fff; text-decoration:none; font-weight:600; }
+.tm-wave { position:absolute; left:0; bottom:-1px; width:100%; height:60px; z-index:1; }
+
+/* ---------- Founder spotlight ---------- */
+.tm-founder { display:grid; grid-template-columns:420px 1fr; gap:70px; align-items:center; }
+.tm-fphoto { position:relative; padding:0 0 26px 26px; }
+.tm-fphoto::before { content:""; position:absolute; left:0; bottom:0; width:86%; height:90%; border-radius:200px 200px 34px 34px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); }
+.tm-fphoto::after { content:""; position:absolute; right:-10px; top:20px; width:110px; height:110px; background-image:radial-gradient(var(--blue) 2.5px,transparent 2.5px); background-size:18px 18px; opacity:.35; }
+.tm-fimg { position:relative; z-index:1; aspect-ratio:4/5; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:90px; color:rgba(255,255,255,.9); background:linear-gradient(135deg,#1c3fd1,#7aa2ff); border-radius:200px 200px 30px 30px; border:6px solid #fff; box-shadow:0 26px 50px rgba(20,40,100,.25); }
+.tm-fimg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; }
+.tm-fbadge { position:absolute; z-index:2; right:-14px; bottom:60px; display:flex; align-items:center; gap:10px; padding:12px 18px; font-size:13.5px; font-weight:600; background:#fff; border-radius:16px; box-shadow:0 16px 32px rgba(20,40,100,.2); }
+.tm-fbadge i { width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:#fff; background:linear-gradient(135deg,var(--blue),#7aa2ff); border-radius:10px; }
+.tm-quote { position:relative; margin:6px 0 22px; padding-left:26px; font-size:22px; line-height:1.6; font-weight:500; color:var(--navy); border-left:4px solid var(--brand); }
+.tm-fname { margin:0; font-size:22px; font-weight:700; }
+.tm-frole { display:block; margin-bottom:18px; font-size:15px; font-weight:600; color:var(--brand); }
+
+/* ---------- Social icons ---------- */
+.tm-s { display:flex; justify-content:center; gap:8px; }
+.tm-s a { width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--blue); text-decoration:none; background:rgba(47,107,255,.10); border-radius:50%; transition:transform .25s, background .25s, color .25s; }
+.tm-s a:hover { color:#fff; background:var(--brand); transform:translateY(-3px); }
+.tm-founder .tm-s { justify-content:flex-start; }
+
+/* ---------- Filter + grid ---------- */
+.tm-all { background:linear-gradient(180deg,#f7f9ff,#fff); }
+.tm-tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:46px; }
+.tm-tabs button { padding:10px 24px; font:inherit; font-size:14.5px; font-weight:600; color:var(--muted); cursor:pointer; background:#fff; border:1.5px solid #e1e7f5; border-radius:50px; transition:all .25s; }
+.tm-tabs button:hover { color:var(--blue); border-color:var(--blue); }
+.tm-tabs button.on { color:#fff; background:linear-gradient(135deg,var(--brand),var(--brand-2)); border-color:transparent; box-shadow:0 10px 22px rgba(238,77,31,.35); }
+.tm-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:44px 26px; }
+.tm-m { --c1:#2f6bff; --c2:#7aa2ff; text-align:center; animation:tm-in .45s ease both; }
+.tm-m:nth-child(4n+2) { --c1:#ee4d1f; --c2:#ff8a5c; }
+.tm-m:nth-child(4n+3) { --c1:#10b981; --c2:#5fdcb2; }
+.tm-m:nth-child(4n+4) { --c1:#7c5cff; --c2:#a995ff; }
+.tm-m.hide { display:none; }
+@keyframes tm-in { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+.tm-ph { position:relative; margin:0 auto 18px; width:100%; max-width:250px; padding:0 0 12px 12px; }
+.tm-ph::before { content:""; position:absolute; left:0; bottom:0; width:88%; height:92%; border-radius:200px 200px 22px 22px; background:linear-gradient(135deg,var(--c1),var(--c2)); transition:transform .4s ease; }
+.tm-pi { position:relative; z-index:1; aspect-ratio:4/5; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:56px; color:rgba(255,255,255,.9); background:linear-gradient(135deg,var(--c2),var(--c1)); border:4px solid #fff; border-radius:200px 200px 20px 20px; box-shadow:0 16px 32px rgba(20,40,100,.16); transition:transform .4s ease; }
+.tm-pi img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .6s ease; }
+.tm-m:hover .tm-pi { transform:translateY(-8px); }
+.tm-m:hover .tm-ph::before { transform:translate(-4px,4px) scale(1.03); }
+.tm-m:hover .tm-pi img { transform:scale(1.07); }
+.tm-m h3 { margin:0 0 4px; font-size:18.5px; }
+.tm-role { display:block; margin-bottom:12px; font-size:14px; font-weight:600; color:var(--c1); }
+
+/* ---------- Stats band ---------- */
+.tm-band { padding:64px 0 !important; color:#fff; background:linear-gradient(135deg,#0b1540,#1c3fd1); position:relative; overflow:hidden; }
+.tm-band::after { content:""; position:absolute; width:340px; height:340px; right:-90px; top:-150px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.4),transparent 70%); }
+.tm-band .wrap { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+.tm-band strong { display:block; font-size:42px; font-weight:800; }
+.tm-band span { font-size:14.5px; color:rgba(255,255,255,.8); }
+.tm-band .wrap > div + div { border-left:1px solid rgba(255,255,255,.2); }
+
+/* ---------- Values ---------- */
+.tm-vals { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.tm-val { padding:34px 28px; background:#fff; border:1px solid #e8ecf4; border-radius:22px; border-bottom:4px solid var(--brand); box-shadow:0 10px 26px rgba(20,40,100,.07); }
+.tm-val:nth-child(2) { border-bottom-color:var(--blue); } .tm-val:nth-child(3) { border-bottom-color:#10b981; }
+.tm-val i { width:56px; height:56px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--brand); background:rgba(238,77,31,.10); border-radius:16px; }
+.tm-val:nth-child(2) i { color:var(--blue); background:rgba(47,107,255,.10); } .tm-val:nth-child(3) i { color:#10b981; background:rgba(16,185,129,.10); }
+.tm-val h3 { margin:0 0 8px; font-size:20px; }
+.tm-val p { margin:0; font-size:15px; }
+
+/* ---------- Life mosaic ---------- */
+.tm-life { background:linear-gradient(180deg,#fff,#fff7f3); }
+.tm-mos { display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:200px 200px; gap:18px; }
+.tm-tile { position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:18px; font-size:14px; font-weight:600; color:#fff; border-radius:22px; background:linear-gradient(135deg,#1c3fd1,#7aa2ff); }
+.tm-tile:nth-child(1) { grid-row:span 2; background:linear-gradient(135deg,#ee4d1f,#ff8a5c); }
+.tm-tile:nth-child(3) { background:linear-gradient(135deg,#10b981,#5fdcb2); }
+.tm-tile:nth-child(4) { background:linear-gradient(135deg,#7c5cff,#a995ff); }
+.tm-tile > i { position:absolute; top:50%; left:50%; transform:translate(-50%,-60%); font-size:44px; opacity:.35; }
+.tm-tile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.tm-tile span { position:relative; z-index:1; padding:6px 14px; background:rgba(15,27,77,.55); border-radius:50px; backdrop-filter:blur(4px); }
+
+/* ---------- CTA ---------- */
+.tm-cta .box { display:grid; grid-template-columns:1.3fr 1fr; gap:30px; align-items:center; padding:56px 50px; color:#fff; border-radius:30px; background:linear-gradient(135deg,#0b1540,#1c3fd1 60%,#2f6bff); position:relative; overflow:hidden; }
+.tm-cta .box::after { content:""; position:absolute; width:300px; height:300px; right:-80px; top:-130px; border-radius:50%; background:radial-gradient(circle,rgba(255,138,92,.45),transparent 70%); }
+.tm-cta .box > * { position:relative; z-index:1; }
+.tm-cta h2 { color:#fff; } .tm-cta p { color:rgba(255,255,255,.85); margin:0; }
+.tm-cbtns { display:flex; flex-wrap:wrap; gap:12px; justify-content:flex-end; }
+.tm-btn { display:inline-block; padding:14px 30px; font-weight:600; text-decoration:none; color:#fff; border-radius:50px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 12px 26px rgba(238,77,31,.4); }
+.tm-btn.ghost { background:transparent; box-shadow:none; border:2px solid rgba(255,255,255,.6); }
+
+@media (max-width:992px) {
+  .tm-banner h1 { font-size:42px; }
+  .tm-founder { grid-template-columns:1fr; gap:46px; }
+  .tm-fphoto { max-width:380px; margin:0 auto; }
+  .tm-grid { grid-template-columns:repeat(2,1fr); }
+  .tm-band .wrap { grid-template-columns:repeat(2,1fr); gap:30px 20px; }
+  .tm-band .wrap > div:nth-child(3) { border-left:0; }
+  .tm-vals { grid-template-columns:1fr; }
+  .tm-mos { grid-template-columns:1fr 1fr; grid-template-rows:180px 180px 180px; }
+  .tm-tile:nth-child(1) { grid-row:auto; grid-column:span 2; }
+  .tm-cta .box { grid-template-columns:1fr; padding:44px 28px; text-align:center; }
+  .tm-cbtns { justify-content:center; }
+}
+@media (max-width:560px) {
+  .tm section { padding:58px 0; }
+  .tm h2 { font-size:28px; }
+  .tm-banner { padding:70px 0 90px !important; }
+  .tm-banner h1 { font-size:32px; }
+  .tm-quote { font-size:18px; }
+  .tm-fbadge { right:0; }
+  .tm-grid { gap:36px 14px; }
+  .tm-ph { padding:0 0 8px 8px; }
+  .tm-m h3 { font-size:16px; } .tm-role { font-size:12.5px; }
+  .tm-s a { width:32px; height:32px; font-size:13px; }
+  .tm-band strong { font-size:32px; }
+}
+@media (prefers-reduced-motion:reduce) { .tm-m { animation:none; } .tm-pi, .tm-ph::before, .tm-pi img { transition:none; } }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><a href="index.html"><img src="assets/img/logo.png" alt="ExamPro Logo" class="logo-img"></a></div>
+    <nav class="links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about-us.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn btn-primary nav-cta nav-cta-mobile">Schedule a Demo <span class="btn-arrow">→</span></button>
+    </nav>
+    <button class="btn btn-primary nav-cta nav-cta-desktop">Schedule a Demo <span class="btn-arrow">→</span></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="tm">
+
+  <!-- Banner -->
+  <section class="tm-banner">
+    <span class="orb o1"></span><span class="orb o2"></span>
+    <div class="wrap">
+      <h1>The People Behind <span>ExamPro</span></h1>
+      <p>Engineers, educators and support specialists working every day to make online exams simple, secure and reliable.</p>
+      <div class="tm-crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Our Team</div>
+    </div>
+    <svg class="tm-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 L0,30 C300,0 900,60 1200,10 L1200,60 Z" fill="#ffffff"></path></svg>
+  </section>
+
+  <!-- Founder spotlight -->
+  <!-- Photos: assets/img/team/ folder mein rakhein (600x750, jpg/webp). Photo na mile to icon dikhega. -->
+  <section>
+    <div class="wrap tm-founder">
+      <div class="tm-fphoto">
+        <div class="tm-fimg"><i class="fa-solid fa-user"></i><img src="assets/img/team/founder.jpg" alt="Founder and CEO" onerror="this.style.display='none'"></div>
+        <div class="tm-fbadge"><i class="fa-solid fa-award"></i>10+ years in education tech</div>
+      </div>
+      <div>
+        <span class="tm-tag">FROM THE FOUNDER</span>
+        <h2>Great exams start with great people</h2>
+        <p class="tm-quote">We built ExamPro so that no institution has to choose between convenience and trust. Every exam should be easy to run and fair for every student.</p>
+        <h3 class="tm-fname">Full Name</h3>
+        <span class="tm-frole">Founder &amp; CEO</span>
+        <div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team grid with filter -->
+  <section class="tm-all">
+    <div class="wrap">
+      <div class="tm-head">
+        <span class="tm-tag">OUR TEAM</span>
+        <h2>Meet the experts</h2>
+        <p>Pick a department to see who works on what.</p>
+      </div>
+
+      <div class="tm-tabs" id="tmTabs">
+        <button type="button" class="on" data-f="all">All</button>
+        <button type="button" data-f="lead">Leadership</button>
+        <button type="button" data-f="tech">Engineering</button>
+        <button type="button" data-f="care">Support &amp; Sales</button>
+      </div>
+
+      <div class="tm-grid" id="tmGrid">
+        <article class="tm-m" data-d="lead"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/leader1.jpg" alt="Chief Technology Officer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Chief Technology Officer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="lead"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/leader2.jpg" alt="Head of Operations" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Head of Operations</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="tech"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member1.jpg" alt="Senior Software Engineer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Senior Software Engineer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="tech"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member2.jpg" alt="Product Designer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Product Designer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="tech"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member3.jpg" alt="Backend Developer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Backend Developer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="tech"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member4.jpg" alt="Frontend Developer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Frontend Developer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="tech"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member5.jpg" alt="Quality Assurance Engineer" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">QA Engineer</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="care"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member6.jpg" alt="Customer Success Manager" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Customer Success Manager</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="care"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member7.jpg" alt="Technical Support Lead" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Technical Support Lead</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="care"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member8.jpg" alt="Training Specialist" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Training Specialist</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="care"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member9.jpg" alt="Sales and Partnerships" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Sales &amp; Partnerships</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+        <article class="tm-m" data-d="care"><div class="tm-ph"><div class="tm-pi"><i class="fa-solid fa-user"></i><img src="assets/img/team/member10.jpg" alt="Marketing Executive" onerror="this.style.display='none'"></div></div><h3>Full Name</h3><span class="tm-role">Marketing Executive</span><div class="tm-s"><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="mailto:info@exampro.in" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats band -->
+  <section class="tm-band">
+    <div class="wrap">
+      <div><strong>10+</strong><span>Years of experience</span></div>
+      <div><strong>710+</strong><span>Clients served</span></div>
+      <div><strong>28</strong><span>States covered</span></div>
+      <div><strong>24/7</strong><span>Support</span></div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section>
+    <div class="wrap">
+      <div class="tm-head">
+        <span class="tm-tag">HOW WE WORK</span>
+        <h2>What we stand for</h2>
+      </div>
+      <div class="tm-vals">
+        <div class="tm-val"><i class="fa-solid fa-graduation-cap"></i><h3>Education first</h3><p>Every feature we build must make teaching, learning or assessing easier.</p></div>
+        <div class="tm-val"><i class="fa-solid fa-shield-halved"></i><h3>Security and fairness</h3><p>We protect exam data and work to keep every exam honest.</p></div>
+        <div class="tm-val"><i class="fa-solid fa-handshake-angle"></i><h3>Real support</h3><p>We stay with our clients before, during and after every exam.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Life at ExamPro -->
+  <section class="tm-life">
+    <div class="wrap">
+      <div class="tm-head">
+        <span class="tm-tag">LIFE AT EXAMPRO</span>
+        <h2>Work, learn and grow together</h2>
+        <p>A look at our office, our events and the moments that make us a team.</p>
+      </div>
+      <div class="tm-mos">
+        <div class="tm-tile"><i class="fa-solid fa-people-group"></i><img src="assets/img/team/life1.jpg" alt="Our team together" onerror="this.style.display='none'"><span>Our team</span></div>
+        <div class="tm-tile"><i class="fa-solid fa-building"></i><img src="assets/img/team/life2.jpg" alt="Our office" onerror="this.style.display='none'"><span>Our office</span></div>
+        <div class="tm-tile"><i class="fa-solid fa-champagne-glasses"></i><img src="assets/img/team/life3.jpg" alt="Celebrations" onerror="this.style.display='none'"><span>Celebrations</span></div>
+        <div class="tm-tile"><i class="fa-solid fa-chalkboard-user"></i><img src="assets/img/team/life4.jpg" alt="Training sessions" onerror="this.style.display='none'"><span>Learning together</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="tm-cta">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <h2>Want to work with us?</h2>
+          <p>We are always looking for passionate people. Or talk to our team to see how ExamPro can help your institution.</p>
+        </div>
+        <div class="tm-cbtns">
+          <a href="contact.html" class="tm-btn">Get in touch</a>
+          <a href="#" class="tm-btn ghost nav-cta">Request a demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <span class="ft-orb"></span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>Exam<span>Pro</span></a>
+        <p class="ft-tag">Secure Exams, Brighter Future</p>
+        <p class="ft-desc">A secure and easy-to-use online examination platform for schools, colleges, coaching institutes and organizations.</p>
+        <form class="ft-news" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="ft-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="features.html"><i class="fa-solid fa-angle-right"></i> Features</a></li>
+          <li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li>
+          <li><a href="about-us.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="team.html"><i class="fa-solid fa-angle-right"></i> Our Team</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul class="ft-contact">
+          <li><span class="ft-ic"><i class="fa-solid fa-phone"></i></span><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-envelope"></i></span><a href="mailto:info@exampro.in">info@exampro.in</a></li>
+          <li><span class="ft-ic"><i class="fa-solid fa-location-dot"></i></span><span>Noida, Uttar Pradesh, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p class="ft-follow">Stay connected for updates, tips and offers.</p>
+        <div class="footer-social">
+          <a href="#" class="so-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="so-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="so-x" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="so-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ExamPro. All rights reserved.</span>
+      <span class="ft-legal"><a href="privacy-policy.html">Privacy Policy</a><i class="ft-sep"></i><a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+  <a href="#" class="ft-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</footer>
+
+<!-- Demo popup -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Schedule a Demo</h2>
+    <hr class="modal-divider">
+    <form class="demo-form">
+      <div class="field-group"><label>Name</label><input type="text"></div>
+      <div class="field-group"><label>Phone Number</label>
+        <div><select class="country-code"><option>India (91)</option><option>USA (1)</option><option>UK (44)</option></select></div>
+      </div>
+      <div class="field-group"><label>Email</label><input type="email"></div>
+      <div class="field-group"><label>Organisation</label><input type="text"></div>
+      <div class="checkbox-grid">
+        <label class="check-item"><input type="checkbox" name="role"> I have a coaching centre</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a school</label>
+        <label class="check-item"><input type="checkbox" name="role"> I have a hospital</label>
+        <label class="check-item"><input type="checkbox" name="role"> Other</label>
+      </div>
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  const demoModal = document.getElementById('demoModal');
+  document.querySelectorAll('.nav-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); demoModal.classList.add('active'); });
+  });
+  document.getElementById('modalClose').addEventListener('click', () => demoModal.classList.remove('active'));
+  demoModal.addEventListener('click', (e) => { if (e.target === demoModal) demoModal.classList.remove('active'); });
+
+  // Team filter
+  const tabs = document.querySelectorAll('#tmTabs button');
+  const cards = document.querySelectorAll('#tmGrid .tm-m');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('on'));
+      tab.classList.add('on');
+      const f = tab.dataset.f;
+      cards.forEach(c => {
+        c.classList.toggle('hide', f !== 'all' && c.dataset.d !== f);
+        // animation dobara chalane ke liye
+        c.style.animation = 'none'; c.offsetHeight; c.style.animation = '';
+      });
+    });
+  });
+</script>
+</body>
+</html>
