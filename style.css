@@ -74,9 +74,9 @@ nav {
 .page-hero p { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 600px; margin: 0 auto; }
 
 /* SECTIONS */
-section { padding: 90px 5%; }
+section { padding: 50px 5%; }
 .section-label { font-size: .75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
-.section-title { font-family: 'Orbitron', monospace; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+.section-title {font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
 .section-title span { background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .section-desc { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 560px; }
 .section-header { text-align: center; margin-bottom: 60px; }

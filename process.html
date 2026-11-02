@@ -4,25 +4,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Process – Tixorion Technologies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="How Tixorion Technologies builds software: discovery, design, development, testing, deployment and long-term support.">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    #process { background: var(--dark); }
-    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 16px; }
-    .process-step { text-align: center; padding: 40px 28px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; transition: all .3s; position: relative; }
-    .process-step:hover { border-color: rgba(124,58,237,.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(124,58,237,.1); }
-    .step-num { font-family: 'Orbitron', monospace; font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; display: block; }
-    .process-step h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
-    .process-step p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
-    .process-step .step-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
-    #process-detail { background: var(--dark2); }
-    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
-    .detail-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .detail-card ul li { color: var(--muted); font-size: .9rem; line-height: 1.6; padding-left: 20px; position: relative; }
-    .detail-card ul li::before { content: '▸'; color: var(--blue); position: absolute; left: 0; }
-    @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+    /* ===== PROCESS PAGE (scoped: pr-) ===== */
+    .pr { font-family: 'Poppins', sans-serif; color: #0b2250; }
+    .pr *, .pr *::before, .pr *::after { box-sizing: border-box; }
+    .pr h1, .pr h2, .pr h3, .pr h4, .pr p, .pr ul { font-family: inherit; margin: 0; padding: 0; }
+    .pr-wrap { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+    .pr a:focus-visible { outline: 3px solid #ff6b81; outline-offset: 3px; }
+
+    .pr-sec { padding: 84px 0; }
+    .pr-sec.alt { background: #f4f8ff; }
+    .pr-head { text-align: center; max-width: 700px; margin: 0 auto 56px; }
+    .pr-bar { display: block; width: 64px; height: 4px; border-radius: 4px; margin: 0 auto 18px; background: linear-gradient(90deg, #1262ce, #ff6b81); }
+    .pr-head h2 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+    .pr-head h2 span { color: #1262ce; }
+    .pr-head p { font-size: 15.5px; line-height: 1.8; color: #51627b; }
+
+    /* banner */
+    .pr-banner {
+      position: relative; overflow: hidden; color: #fff; padding: 150px 0 80px;
+      background:
+        radial-gradient(circle at 85% 40%, #2f7fd6 0%, transparent 50%),
+        radial-gradient(circle at 0% 0%, #1a4f9c 0%, transparent 45%),
+        linear-gradient(120deg, #071e47 0%, #0d3573 55%, #14549b 100%);
+    }
+    .pr-banner::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 50%); mask-image: linear-gradient(90deg, transparent, #000 50%);
+    }
+    .pr-banner .pr-wrap { position: relative; }
+    .pr-crumb { font-size: 13px; color: #9dc6ee; margin-bottom: 20px; }
+    .pr-crumb a { color: #cfe4fb; text-decoration: none; }
+    .pr-banner h1 { font-size: clamp(32px, 4.8vw, 54px); font-weight: 700; line-height: 1.12; max-width: 760px; }
+    .pr-banner h1 span { color: #7ccbff; }
+    .pr-banner p { margin-top: 20px; max-width: 560px; font-size: 16px; line-height: 1.8; color: #c3d6ee; }
+    .pr-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .pr-pills span { font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 50px; color: #e6f1ff; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.18); }
+
+    /* timeline */
+    .pr-timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+    .pr-timeline::before {
+      content: ""; position: absolute; top: 10px; bottom: 10px; left: 50%; width: 2px; margin-left: -1px;
+      background: repeating-linear-gradient(to bottom, #b9d2f3 0 8px, transparent 8px 16px);
+    }
+    .pr-step { position: relative; display: grid; grid-template-columns: 1fr 64px 1fr; column-gap: 28px; align-items: center; }
+    .pr-step + .pr-step { margin-top: 36px; }
+    .pr-num {
+      grid-column: 2; grid-row: 1; z-index: 1; width: 64px; height: 64px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 20px; font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #1262ce, #0b3f8f); border: 5px solid #fff; box-shadow: 0 0 0 2px #b9d2f3;
+    }
+    .pr-card {
+      grid-column: 1; grid-row: 1; background: #fff; border: 1px solid #e1e8f2; border-radius: 16px; padding: 28px 30px;
+      box-shadow: 0 8px 24px rgba(15, 40, 90, .06); transition: border-color .3s, box-shadow .3s;
+    }
+    .pr-card:hover { border-color: #b9d2f3; box-shadow: 0 16px 32px rgba(18, 98, 206, .12); }
+    .pr-step:nth-child(even) .pr-card { grid-column: 3; }
+    .pr-step:nth-child(even) .pr-num { background: linear-gradient(135deg, #ff6b81, #e84e62); box-shadow: 0 0 0 2px #ffc9d1; }
+    .pr-ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 19px; color: #1262ce; background: #eaf2ff; margin-bottom: 16px; }
+    .pr-step:nth-child(even) .pr-ico { color: #e84e62; background: #ffeaed; }
+    .pr-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+    .pr-card p { font-size: 14.5px; line-height: 1.8; color: #51627b; }
+
+    /* detail cards */
+    .pr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .pr-box { background: #fff; border: 1px solid #e1e8f2; border-radius: 16px; padding: 34px 32px; border-top: 4px solid var(--ac, #1262ce); }
+    .pr-box-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .pr-box-head i { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 19px; color: var(--ac, #1262ce); background: color-mix(in srgb, var(--ac, #1262ce) 12%, #fff); }
+    .pr-box h3 { font-size: 19px; font-weight: 700; }
+    .pr-box ul { list-style: none; display: grid; gap: 12px; }
+    .pr-box li { position: relative; padding-left: 28px; font-size: 14.5px; line-height: 1.65; color: #51627b; }
+    .pr-box li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; top: 1px; font-size: 12px; color: var(--ac, #1262ce); }
+
+    /* cta */
+    .pr-cta { text-align: center; color: #fff; padding: 80px 5%; background: linear-gradient(120deg, #071e47, #0d3573 60%, #14549b); }
+    .pr-cta h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; margin-bottom: 14px; }
+    .pr-cta p { max-width: 540px; margin: 0 auto 30px; color: #b8cdea; font-size: 15.5px; line-height: 1.8; }
+    .pr-btn { display: inline-block; padding: 15px 34px; border-radius: 50px; background: linear-gradient(135deg, #ff6b81, #e84e62); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 10px 24px rgba(232, 78, 98, .4); transition: transform .3s, box-shadow .3s; }
+    .pr-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(232, 78, 98, .55); color: #fff; }
+
+    /* responsive */
+    @media (max-width: 860px) {
+      .pr-timeline::before { left: 28px; margin-left: -1px; }
+      .pr-step { grid-template-columns: 56px 1fr; column-gap: 18px; align-items: start; }
+      .pr-num { grid-column: 1; width: 56px; height: 56px; font-size: 18px; }
+      .pr-card, .pr-step:nth-child(even) .pr-card { grid-column: 2; padding: 24px 22px; }
+      .pr-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .pr-banner { padding: 120px 0 56px; }
+      .pr-sec { padding: 60px 0; }
+      .pr-box { padding: 28px 24px; }
+      .pr-cta { padding: 60px 5%; }
+    }
+    @media (prefers-reduced-motion: reduce) { .pr-card, .pr-btn { transition: none; } }
   </style>
 </head>
 <body>
@@ -50,107 +131,156 @@
     <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
   </div>
 
-  <div class="page-hero">
-    <div class="section-label">How We Work</div>
-    <h1>Our <span>Development Process</span></h1>
-    <p>A proven, transparent methodology that ensures on-time delivery and exceeds expectations at every milestone.</p>
-  </div>
+  <main class="pr">
 
-  <section id="process">
-    <div class="process-grid">
-      <div class="process-step">
-        <span class="step-icon">🔍</span>
-        <span class="step-num">01</span>
-        <h4>Discovery & Planning</h4>
-        <p>Understanding your goals, audience, and requirements through detailed workshops and technical analysis. We define scope, timeline, and success metrics upfront.</p>
+    <!-- BANNER -->
+    <header class="pr-banner">
+      <div class="pr-wrap">
+        <div class="pr-crumb"><a href="index.html">Home</a> / Our process</div>
+        <h1>A clear process, from first call to <span>long-term support</span></h1>
+        <p>A transparent method that keeps projects on schedule and gives you visibility at every milestone.</p>
+        <div class="pr-pills">
+          <span>Discovery</span><span>Design</span><span>Development</span><span>Testing</span><span>Deployment</span><span>Support</span>
+        </div>
       </div>
-      <div class="process-step">
-        <span class="step-icon">🎨</span>
-        <span class="step-num">02</span>
-        <h4>Design & Prototype</h4>
-        <p>Creating wireframes, UI designs, and interactive prototypes for validation before development begins. Client feedback is incorporated at every stage.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-icon">💻</span>
-        <span class="step-num">03</span>
-        <h4>Development</h4>
-        <p>Agile sprints with daily standups, code reviews, and continuous integration for quality assurance. Full transparency throughout the build process.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-icon">🧪</span>
-        <span class="step-num">04</span>
-        <h4>Testing & QA</h4>
-        <p>Rigorous unit, integration, and user acceptance testing to ensure a bug-free, robust product. Performance and security testing included.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-icon">🚀</span>
-        <span class="step-num">05</span>
-        <h4>Deployment</h4>
-        <p>Smooth CI/CD pipeline deployment with zero-downtime releases and real-time monitoring setup. We handle everything from staging to production.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-icon">📈</span>
-        <span class="step-num">06</span>
-        <h4>Support & Growth</h4>
-        <p>Post-launch maintenance, performance monitoring, and iterative improvements to grow with your business. Long-term partnership approach.</p>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section id="process-detail">
-    <div class="section-header">
-      <div class="section-label">Deep Dive</div>
-      <h2 class="section-title">What Makes Our Process <span>Different</span></h2>
-    </div>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h3>⚡ Agile Methodology</h3>
-        <ul>
-          <li>2-week sprint cycles with clear deliverables</li>
-          <li>Daily standup meetings for progress tracking</li>
-          <li>Sprint retrospectives for continuous improvement</li>
-          <li>Flexible scope management as needs evolve</li>
-          <li>Regular client demos for feedback incorporation</li>
-        </ul>
-      </div>
-      <div class="detail-card">
-        <h3>🔒 Quality Assurance</h3>
-        <ul>
-          <li>Automated unit and integration test suites</li>
-          <li>Manual QA testing by dedicated testers</li>
-          <li>Performance load testing on all key flows</li>
-          <li>Security vulnerability scanning before launch</li>
-          <li>Cross-browser and cross-device compatibility checks</li>
-        </ul>
-      </div>
-      <div class="detail-card">
-        <h3>📊 Transparent Reporting</h3>
-        <ul>
-          <li>Real-time project dashboard access for clients</li>
-          <li>Weekly progress reports and milestone updates</li>
-          <li>Dedicated Slack/Teams channel for communication</li>
-          <li>Issue tracking with transparent resolution timelines</li>
-          <li>Monthly strategy reviews for long-term projects</li>
-        </ul>
-      </div>
-      <div class="detail-card">
-        <h3>🛡️ Security First</h3>
-        <ul>
-          <li>OWASP security guidelines followed throughout</li>
-          <li>Data encryption at rest and in transit</li>
-          <li>Role-based access control implemented by default</li>
-          <li>Penetration testing before production launch</li>
-          <li>GDPR and compliance considerations built in</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <!-- TIMELINE -->
+    <section class="pr-sec">
+      <div class="pr-wrap">
+        <div class="pr-head">
+          <span class="pr-bar"></span>
+          <h2>How we <span>build your product</span></h2>
+          <p>Six steps, each with clear deliverables, so you always know what happens next.</p>
+        </div>
 
-  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
-    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Ready to <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Start Your Project?</span></h2>
-    <p style="color:var(--muted); margin-bottom:32px;">Let's kick off with a free discovery call to understand your needs.</p>
-    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Book a Free Consultation →</a>
-  </section>
+        <div class="pr-timeline">
+
+          <div class="pr-step">
+            <div class="pr-num">1</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h3>Discovery &amp; planning</h3>
+              <p>We learn your goals, audience and requirements through workshops and technical analysis, then agree on scope, timeline and success metrics.</p>
+            </div>
+          </div>
+
+          <div class="pr-step">
+            <div class="pr-num">2</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-pen-ruler"></i></div>
+              <h3>Design &amp; prototype</h3>
+              <p>We create wireframes, UI designs and interactive prototypes for you to validate before development starts. Your feedback is built in at every stage.</p>
+            </div>
+          </div>
+
+          <div class="pr-step">
+            <div class="pr-num">3</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-code"></i></div>
+              <h3>Development</h3>
+              <p>Agile sprints with regular standups, code reviews and continuous integration. You can see progress throughout the build.</p>
+            </div>
+          </div>
+
+          <div class="pr-step">
+            <div class="pr-num">4</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-bug-slash"></i></div>
+              <h3>Testing &amp; QA</h3>
+              <p>Unit, integration and user acceptance testing, plus performance and security checks, so the product is stable before it goes live.</p>
+            </div>
+          </div>
+
+          <div class="pr-step">
+            <div class="pr-num">5</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-rocket"></i></div>
+              <h3>Deployment</h3>
+              <p>A smooth CI/CD release with monitoring set up from day one. We handle everything from staging to production.</p>
+            </div>
+          </div>
+
+          <div class="pr-step">
+            <div class="pr-num">6</div>
+            <div class="pr-card">
+              <div class="pr-ico"><i class="fa-solid fa-chart-line"></i></div>
+              <h3>Support &amp; growth</h3>
+              <p>After launch we provide maintenance, performance monitoring and steady improvements, so the product grows with your business.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="pr-sec alt">
+      <div class="pr-wrap">
+        <div class="pr-head">
+          <span class="pr-bar"></span>
+          <h2>What makes our process <span>different</span></h2>
+          <p>The practices behind every project we deliver.</p>
+        </div>
+
+        <div class="pr-grid">
+
+          <div class="pr-box" style="--ac:#1262ce">
+            <div class="pr-box-head"><i class="fa-solid fa-bolt"></i><h3>Agile methodology</h3></div>
+            <ul>
+              <li>2-week sprint cycles with clear deliverables</li>
+              <li>Daily standups to track progress</li>
+              <li>Sprint retrospectives for continuous improvement</li>
+              <li>Flexible scope as your needs change</li>
+              <li>Regular demos so you can give feedback early</li>
+            </ul>
+          </div>
+
+          <div class="pr-box" style="--ac:#e84e62">
+            <div class="pr-box-head"><i class="fa-solid fa-clipboard-check"></i><h3>Quality assurance</h3></div>
+            <ul>
+              <li>Automated unit and integration test suites</li>
+              <li>Manual testing by dedicated testers</li>
+              <li>Load testing on all key user flows</li>
+              <li>Security vulnerability scanning before launch</li>
+              <li>Cross-browser and cross-device checks</li>
+            </ul>
+          </div>
+
+          <div class="pr-box" style="--ac:#0a9b8a">
+            <div class="pr-box-head"><i class="fa-solid fa-chart-pie"></i><h3>Transparent reporting</h3></div>
+            <ul>
+              <li>Project dashboard access for clients</li>
+              <li>Weekly progress reports and milestone updates</li>
+              <li>Dedicated Slack or Teams channel</li>
+              <li>Issue tracking with clear resolution timelines</li>
+              <li>Monthly strategy reviews on long-term projects</li>
+            </ul>
+          </div>
+
+          <div class="pr-box" style="--ac:#7c3aed">
+            <div class="pr-box-head"><i class="fa-solid fa-shield-halved"></i><h3>Security first</h3></div>
+            <ul>
+              <li>OWASP security guidelines followed throughout</li>
+              <li>Data encrypted at rest and in transit</li>
+              <li>Role-based access control by default</li>
+              <li>Penetration testing before production launch</li>
+              <li>Compliance requirements considered from the start</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pr-cta">
+      <h2>Ready to start your project?</h2>
+      <p>Book a free discovery call and tell us what you want to build.</p>
+      <a href="contact.html" class="pr-btn">Book a free consultation</a>
+    </section>
+
+  </main>
 
   <footer>
     <div class="footer-grid">
@@ -162,8 +292,6 @@
     <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
   </footer>
 
-  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
-  document.querySelectorAll('.process-step, .detail-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='all .5s ease'; observer.observe(el); });</script>
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }</script>
 </body>
 </html>

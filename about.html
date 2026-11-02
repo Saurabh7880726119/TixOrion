@@ -3,42 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us – Tixorion Technologies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Learn about Tixorion Technologies, our mission, vision, team and approach to building digital solutions.">
+  <title>About Us | Tixorion Technologies</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <style>
-    #about { background: var(--dark3); }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .why-features { display: flex; flex-direction: column; gap: 28px; }
-    .why-item { display: flex; gap: 16px; align-items: flex-start; }
-    .why-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: linear-gradient(135deg, rgba(59,158,255,.2), rgba(124,58,237,.2)); border: 1px solid rgba(59,158,255,.25); }
-    .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-    .why-item p { color: var(--muted); font-size: .88rem; line-height: 1.7; }
-    .orbit-visual { position: relative; width: 320px; height: 320px; margin: 0 auto; }
-    .orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 0 40px rgba(59,158,255,.4); animation: orbit-pulse 3s ease-in-out infinite; }
-    .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(59,158,255,.2); transform: translate(-50%,-50%); }
-    .orbit-ring-1 { width: 160px; height: 160px; animation: spin 8s linear infinite; }
-    .orbit-ring-2 { width: 240px; height: 240px; animation: spin 14s linear infinite reverse; }
-    .orbit-ring-3 { width: 320px; height: 320px; animation: spin 20s linear infinite; }
-    .orbit-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); top: -5px; left: 50%; margin-left: -5px; box-shadow: 0 0 10px var(--blue); }
-    .orbit-dot-2 { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
-    .orbit-dot-3 { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
-    #stats { background: var(--dark2); }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 24px; text-align: center; transition: all .3s; }
-    .stat-card:hover { border-color: rgba(59,158,255,.3); transform: translateY(-4px); }
-    .stat-num { font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-    .stat-label { font-size: .85rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-    #mission { background: var(--dark); }
-    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .mission-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
-    .mission-card h3 { font-family: 'Orbitron', monospace; font-size: 1.1rem; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
-    .mission-card p { color: var(--muted); line-height: 1.8; font-size: .95rem; }
-    @media (max-width: 900px) { .why-grid, .mission-grid { grid-template-columns: 1fr; } .orbit-visual { display: none; } }
+    /* About page styles - namespaced to avoid changing other pages */
+    :root {
+      --ab-blue: #1769e8;
+      --ab-blue-dark: #0d45a6;
+      --ab-ink: #101828;
+      --ab-muted: #667085;
+      --ab-soft: #f5f8ff;
+      --ab-line: #e6ebf2;
+      --ab-white: #fff;
+    }
+
+    body { font-family: "DM Sans", sans-serif; color: var(--ab-ink); }
+    .ab-page { overflow: hidden; background: #fff; }
+    .ab-container { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .ab-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; color: var(--ab-blue);
+      font-size: 12px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase;
+    }
+    .ab-eyebrow::before { content: ""; width: 25px; height: 2px; background: currentColor; }
+    .ab-heading {
+      margin: 14px 0 18px; font-family: "Manrope", sans-serif;
+      font-size: clamp(30px, 4vw, 46px); line-height: 1.16; letter-spacing: -1.5px; font-weight: 800;
+    }
+    .ab-heading span { color: var(--ab-blue); }
+    .ab-copy { color: var(--ab-muted); font-size: 16px; line-height: 1.85; }
+    .ab-section { padding: 92px 0; }
+    .ab-section-head { max-width: 690px; margin: 0 auto 48px; text-align: center; }
+    .ab-section-head .ab-eyebrow { justify-content: center; }
+    .ab-section-head .ab-copy { max-width: 620px; margin: 0 auto; }
+
+    /* Hero */
+    .ab-hero {
+      position: relative; isolation: isolate; padding: 112px 0 105px; color: #fff;
+      background:
+        radial-gradient(circle at 82% 22%, rgba(82,157,255,.34), transparent 28%),
+        radial-gradient(circle at 12% 90%, rgba(74,105,255,.25), transparent 30%),
+        linear-gradient(115deg, #071a3b 0%, #0c3472 52%, #145bc1 100%);
+    }
+    .ab-hero::before, .ab-hero::after {
+      content: ""; position: absolute; z-index: -1; border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%; pointer-events: none;
+    }
+    .ab-hero::before { width: 460px; height: 460px; right: -120px; top: -220px; }
+    .ab-hero::after { width: 620px; height: 620px; right: -200px; top: -300px; }
+    .ab-hero-content { max-width: 790px; }
+    .ab-hero .ab-eyebrow { color: #a9ceff; }
+    .ab-hero h1 {
+      margin: 20px 0 22px; font: 800 clamp(40px, 6vw, 68px)/1.08 "Manrope", sans-serif;
+      letter-spacing: -2.3px;
+    }
+    .ab-hero h1 span { color: #8fc0ff; }
+    .ab-hero p { max-width: 670px; margin: 0; color: #d5e5ff; font-size: 18px; line-height: 1.8; }
+    .ab-breadcrumb { margin-top: 30px; color: #c3d8f7; font-size: 13px; }
+    .ab-breadcrumb a { color: #fff; text-decoration: none; }
+
+    /* Intro */
+    .ab-intro-grid { display: grid; grid-template-columns: 1fr .9fr; gap: 75px; align-items: center; }
+    .ab-intro-visual {
+      min-height: 390px; position: relative; display: grid; place-items: center;
+      border-radius: 24px; overflow: hidden;
+      background: linear-gradient(145deg, #eaf2ff, #f7faff 55%, #dceaff);
+    }
+    .ab-visual-orbit { position: absolute; width: 290px; height: 290px; border: 1px solid #b9d2fa; border-radius: 50%; }
+    .ab-visual-orbit::before, .ab-visual-orbit::after {
+      content: ""; position: absolute; inset: 28px; border: 1px dashed #a9c7f5; border-radius: 50%;
+    }
+    .ab-visual-orbit::after { inset: 65px; border-style: solid; }
+    .ab-visual-center {
+      width: 118px; height: 118px; display: grid; place-items: center; border-radius: 28px;
+      color: #fff; font: 800 35px "Manrope", sans-serif;
+      background: linear-gradient(145deg, #2378f2, #1246ae);
+      box-shadow: 0 22px 50px rgba(23,105,232,.28); transform: rotate(-8deg);
+    }
+    .ab-float {
+      position: absolute; display: flex; align-items: center; gap: 10px; padding: 13px 16px;
+      border: 1px solid #e4ecf8; border-radius: 12px; background: rgba(255,255,255,.94);
+      color: #344054; font-size: 13px; font-weight: 700; box-shadow: 0 12px 35px rgba(27,67,125,.09);
+    }
+    .ab-float i { width: 9px; height: 9px; border-radius: 50%; background: var(--ab-blue); }
+    .ab-float.one { left: 22px; top: 55px; }
+    .ab-float.two { right: 20px; bottom: 55px; }
+    .ab-intro-points { display: grid; gap: 18px; margin-top: 28px; }
+    .ab-intro-point { display: flex; gap: 14px; align-items: flex-start; }
+    .ab-check {
+      flex: 0 0 27px; width: 27px; height: 27px; display: grid; place-items: center;
+      border-radius: 50%; color: var(--ab-blue); background: #eaf2ff; font-weight: 800;
+    }
+    .ab-intro-point strong { display: block; margin-bottom: 4px; font-size: 15px; }
+    .ab-intro-point small { display: block; color: var(--ab-muted); font-size: 14px; line-height: 1.65; }
+
+    /* Why choose us */
+    .ab-why { background: var(--ab-soft); }
+    .ab-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .ab-feature {
+      padding: 30px 27px; border: 1px solid var(--ab-line); border-radius: 16px; background: #fff;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .ab-feature:hover { transform: translateY(-6px); border-color: #c7dcff; box-shadow: 0 18px 45px rgba(16,55,112,.08); }
+    .ab-feature-icon {
+      width: 50px; height: 50px; display: grid; place-items: center; margin-bottom: 20px;
+      border-radius: 14px; color: var(--ab-blue); background: #eaf2ff; font-size: 22px;
+    }
+    .ab-feature h3 { margin: 0 0 10px; font: 700 18px "Manrope", sans-serif; }
+    .ab-feature p { margin: 0; color: var(--ab-muted); font-size: 14px; line-height: 1.8; }
+
+    /* Mission / vision */
+    .ab-mv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .ab-mv-card { position: relative; padding: 34px; border: 1px solid var(--ab-line); border-radius: 17px; background: #fff; }
+    .ab-mv-card::before { content: ""; position: absolute; left: 0; top: 28px; bottom: 28px; width: 3px; border-radius: 5px; background: var(--ab-blue); }
+    .ab-mv-label { color: var(--ab-blue); font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .ab-mv-card h3 { margin: 10px 0 12px; font: 800 23px "Manrope", sans-serif; }
+    .ab-mv-card p { margin: 0; color: var(--ab-muted); font-size: 14px; line-height: 1.85; }
+
+    /* Team - replace placeholders with real names, designations and images later */
+    .ab-team { background: #f7f9fc; }
+    .ab-team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    .ab-person {
+      overflow: hidden; border: 1px solid var(--ab-line); border-radius: 16px; background: #fff;
+      text-align: center; transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .ab-person:hover { transform: translateY(-6px); box-shadow: 0 18px 42px rgba(16,55,112,.09); }
+    .ab-person-top {
+      min-height: 190px; display: grid; place-items: center; position: relative;
+      background: linear-gradient(145deg, #e8f1ff, #f5f8ff);
+    }
+    .ab-avatar {
+      width: 112px; height: 112px; position: relative; overflow: hidden; border: 5px solid #fff;
+      border-radius: 50%; background: linear-gradient(145deg, #b8d4ff, #6ea5f3);
+      box-shadow: 0 10px 28px rgba(23,105,232,.15);
+    }
+    .ab-avatar::before {
+      content: ""; position: absolute; width: 38px; height: 38px; left: 32px; top: 18px;
+      border-radius: 50%; background: #fff;
+    }
+    .ab-avatar::after {
+      content: ""; position: absolute; width: 70px; height: 48px; left: 16px; bottom: -7px;
+      border-radius: 45px 45px 18px 18px; background: #fff;
+    }
+    .ab-person-body { padding: 19px 12px 22px; }
+    .ab-person-body h3 { margin: 0 0 6px; font: 800 15px "Manrope", sans-serif; }
+    .ab-person-body p { margin: 0; color: var(--ab-muted); font-size: 12px; line-height: 1.5; }
+    .ab-person-body .ab-edit-note { display: inline-block; margin-top: 12px; color: #8a98ad; font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+
+    /* CTA */
+    .ab-cta-wrap { padding: 0 0 92px; background: #f7f9fc; }
+    .ab-cta {
+      display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 48px 52px;
+      border-radius: 22px; color: #fff;
+      background: radial-gradient(circle at 85% 10%, rgba(255,255,255,.18), transparent 25%), linear-gradient(110deg, #0c3472, #1769e8);
+    }
+    .ab-cta h2 { margin: 0 0 10px; font: 800 clamp(25px, 3vw, 34px)/1.2 "Manrope", sans-serif; }
+    .ab-cta p { margin: 0; color: #dceaff; line-height: 1.7; }
+    .ab-cta-btn {
+      flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; padding: 15px 24px;
+      border-radius: 9px; color: #124cae; background: #fff; text-decoration: none; font-size: 14px; font-weight: 800;
+      transition: transform .2s ease;
+    }
+    .ab-cta-btn:hover { transform: translateY(-3px); }
+
+    @media (max-width: 1050px) {
+      .ab-team-grid { grid-template-columns: repeat(3, 1fr); }
+      .ab-intro-grid { gap: 40px; }
+    }
+    @media (max-width: 760px) {
+      .ab-container { width: min(100% - 34px, 560px); }
+      .ab-section { padding: 68px 0; }
+      .ab-hero { padding: 82px 0 76px; }
+      .ab-hero h1 { letter-spacing: -1.4px; }
+      .ab-hero p { font-size: 16px; }
+      .ab-intro-grid, .ab-mv-grid { grid-template-columns: 1fr; }
+      .ab-intro-visual { min-height: 310px; order: -1; }
+      .ab-visual-orbit { transform: scale(.8); }
+      .ab-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .ab-team-grid { grid-template-columns: repeat(2, 1fr); }
+      .ab-cta { align-items: flex-start; flex-direction: column; padding: 34px 26px; }
+    }
+    @media (max-width: 460px) {
+      .ab-feature-grid { grid-template-columns: 1fr; }
+      .ab-team-grid { gap: 12px; }
+      .ab-person-top { min-height: 155px; }
+      .ab-avatar { transform: scale(.85); }
+      .ab-person-body { padding: 15px 8px 18px; }
+      .ab-float { padding: 10px 12px; font-size: 11px; }
+      .ab-float.one { left: 10px; }
+      .ab-float.two { right: 10px; }
+    }
   </style>
 </head>
 <body>
-
+  <!-- Keep your existing site navigation -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"></a>
     <ul class="nav-links">
@@ -62,90 +225,148 @@
     <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
   </div>
 
-  <div class="page-hero">
-    <div class="section-label">Who We Are</div>
-    <h1>About <span>Tixorion Technologies</span></h1>
-    <p>A passionate technology company dedicated to building intelligent digital solutions that power the businesses of tomorrow.</p>
-  </div>
-
-  <section id="about">
-    <div class="why-grid">
-      <div>
-        <div class="section-label">Why Choose Us</div>
-        <h2 class="section-title">We Build Solutions<br>That <span>Actually Work</span></h2>
-        <p class="section-desc" style="margin-bottom: 36px;">At Tixorion, we combine deep technical expertise with a client-first approach to deliver software that creates real business value. Founded with a vision to democratize cutting-edge technology, we've grown into a full-service digital transformation partner.</p>
-        <div class="why-features">
-          <div class="why-item"><div class="why-icon">🏆</div><div><h4>Expert Engineering Team</h4><p>Certified engineers with 5–12 years of experience across diverse domains, delivering high-quality code and architecture.</p></div></div>
-          <div class="why-item"><div class="why-icon">⚡</div><div><h4>Agile & Fast Delivery</h4><p>Iterative development sprints with continuous delivery ensure faster time-to-market without sacrificing quality.</p></div></div>
-          <div class="why-item"><div class="why-icon">🛡️</div><div><h4>Security First Approach</h4><p>Every solution is built with security best practices embedded from the ground up, not bolted on later.</p></div></div>
-          <div class="why-item"><div class="why-icon">🤝</div><div><h4>Transparent Communication</h4><p>Real-time project tracking, weekly reporting, and dedicated account managers keep you in the loop always.</p></div></div>
+  <main class="ab-page">
+    <!-- HERO -->
+    <section class="ab-hero">
+      <div class="ab-container">
+        <div class="ab-hero-content">
+          <div class="ab-eyebrow">Who We Are</div>
+          <h1>Technology with<br><span>Purpose & Possibility.</span></h1>
+          <p>We are Tixorion Technologies — a digital solutions company focused on helping businesses move forward with thoughtful technology, reliable development and meaningful partnerships.</p>
+          <div class="ab-breadcrumb"><a href="index.html">Home</a> &nbsp; / &nbsp; About Us</div>
         </div>
       </div>
-      <div class="orbit-visual">
-        <div class="orbit-center">💻</div>
-        <div class="orbit-ring orbit-ring-1"><div class="orbit-dot"></div></div>
-        <div class="orbit-ring orbit-ring-2"><div class="orbit-dot orbit-dot-2"></div></div>
-        <div class="orbit-ring orbit-ring-3"><div class="orbit-dot orbit-dot-3"></div></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="stats">
-    <div class="section-header">
-      <div class="section-label">Our Impact</div>
-      <h2 class="section-title">Numbers That <span>Speak</span></h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
-      <div class="stat-card"><div class="stat-num">80+</div><div class="stat-label">Happy Clients</div></div>
-      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-card"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Guarantee</div></div>
-      <div class="stat-card"><div class="stat-num">11+</div><div class="stat-label">Team Members</div></div>
-      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
-    </div>
-  </section>
+    <!-- COMPANY INTRO -->
+    <section class="ab-section">
+      <div class="ab-container ab-intro-grid">
+        <div>
+          <div class="ab-eyebrow">About Tixorion</div>
+          <h2 class="ab-heading">We turn ideas into <span>digital experiences.</span></h2>
+          <p class="ab-copy">At Tixorion Technologies, we work with businesses to understand their goals and create digital solutions that are practical, scalable and easy to use. From the first conversation to launch and beyond, our focus stays on quality, clear communication and long-term value.</p>
+          <div class="ab-intro-points">
+            <div class="ab-intro-point"><span class="ab-check">✓</span><div><strong>Business-first thinking</strong><small>We begin by understanding the challenge before choosing the technology.</small></div></div>
+            <div class="ab-intro-point"><span class="ab-check">✓</span><div><strong>Reliable development</strong><small>We focus on clean implementation, usability and maintainable solutions.</small></div></div>
+            <div class="ab-intro-point"><span class="ab-check">✓</span><div><strong>Long-term partnership</strong><small>We value transparent communication and support throughout the journey.</small></div></div>
+          </div>
+        </div>
+        <div class="ab-intro-visual" aria-label="Tixorion digital technology illustration">
+          <div class="ab-visual-orbit"></div>
+          <div class="ab-visual-center">TX</div>
+          <div class="ab-float one"><i></i> Digital Innovation</div>
+          <div class="ab-float two"><i></i> Smart Solutions</div>
+        </div>
+      </div>
+    </section>
 
-  <section id="mission">
-    <div class="section-header">
-      <div class="section-label">Our Foundation</div>
-      <h2 class="section-title">Mission & <span>Vision</span></h2>
-    </div>
-    <div class="mission-grid">
-      <div class="mission-card">
-        <h3>🎯 Our Mission</h3>
-        <p>To empower businesses of all sizes with cutting-edge technology solutions that drive growth, efficiency, and innovation. We are committed to delivering exceptional software that solves real-world problems and creates lasting value for our clients and their customers.</p>
+    <!-- WHY CHOOSE US -->
+    <section class="ab-section ab-why">
+      <div class="ab-container">
+        <div class="ab-section-head">
+          <div class="ab-eyebrow">Why Tixorion</div>
+          <h2 class="ab-heading">A thoughtful approach to <span>technology.</span></h2>
+          <p class="ab-copy">The right technology should make work simpler, create better experiences and help your business grow.</p>
+        </div>
+        <div class="ab-feature-grid">
+          <article class="ab-feature"><div class="ab-feature-icon">✦</div><h3>Practical Innovation</h3><p>We choose ideas and technologies that solve real business problems and create useful outcomes.</p></article>
+          <article class="ab-feature"><div class="ab-feature-icon">⌘</div><h3>Quality Engineering</h3><p>We pay attention to performance, usability, maintainability and the details that matter.</p></article>
+          <article class="ab-feature"><div class="ab-feature-icon">◈</div><h3>Client Focus</h3><p>Your goals guide the process, from understanding requirements to delivering the solution.</p></article>
+          <article class="ab-feature"><div class="ab-feature-icon">↗</div><h3>Scalable Solutions</h3><p>We build with future needs in mind so your digital products can evolve with your business.</p></article>
+          <article class="ab-feature"><div class="ab-feature-icon">◎</div><h3>Clear Communication</h3><p>We believe in honest updates, shared understanding and a collaborative working relationship.</p></article>
+          <article class="ab-feature"><div class="ab-feature-icon">♡</div><h3>Ongoing Support</h3><p>We aim to be a dependable technology partner beyond the initial delivery.</p></article>
+        </div>
       </div>
-      <div class="mission-card">
-        <h3>🚀 Our Vision</h3>
-        <p>To be the most trusted technology partner for businesses navigating the digital age. We envision a world where intelligent technology is accessible to every business, enabling them to compete at the highest level and make a positive impact in their industries.</p>
-      </div>
-      <div class="mission-card">
-        <h3>💡 Our Values</h3>
-        <p>Innovation, integrity, and impact guide everything we do. We believe in honest partnerships, continuous learning, and building technology that stands the test of time. Our client's success is our success — and that drives every decision we make.</p>
-      </div>
-      <div class="mission-card">
-        <h3>🌍 Our Approach</h3>
-        <p>We take a holistic approach to every project — understanding your business goals, your users' needs, and the technical landscape before writing a single line of code. This ensures every solution we deliver is not just functional, but truly transformative.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); border-bottom: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
-    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Meet the <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Team</span></h2>
-    <p style="color:var(--muted); margin-bottom:32px;">The brilliant minds behind Tixorion Technologies.</p>
-    <a href="team.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Meet Our Team →</a>
-  </section>
+    <!-- MISSION / VISION / VALUES / APPROACH -->
+    <section class="ab-section">
+      <div class="ab-container">
+        <div class="ab-section-head">
+          <div class="ab-eyebrow">What Guides Us</div>
+          <h2 class="ab-heading">Our purpose, <span>vision & values.</span></h2>
+          <p class="ab-copy">The principles that shape how we think, build and work with our clients.</p>
+        </div>
+        <div class="ab-mv-grid">
+          <article class="ab-mv-card"><div class="ab-mv-label">01 / Mission</div><h3>Make technology useful.</h3><p>Our mission is to create dependable digital solutions that help businesses work smarter, serve people better and move towards their goals.</p></article>
+          <article class="ab-mv-card"><div class="ab-mv-label">02 / Vision</div><h3>Build for a better digital future.</h3><p>Our vision is to become a trusted technology partner known for thoughtful innovation, meaningful results and lasting client relationships.</p></article>
+          <article class="ab-mv-card"><div class="ab-mv-label">03 / Values</div><h3>Integrity in every interaction.</h3><p>We value honesty, accountability, continuous learning, respect and a commitment to doing quality work.</p></article>
+          <article class="ab-mv-card"><div class="ab-mv-label">04 / Approach</div><h3>Understand. Create. Improve.</h3><p>We listen to your needs, plan the right solution, develop with care and keep improving through feedback and collaboration.</p></article>
+        </div>
+      </div>
+    </section>
 
+    <!-- TEAM: replace each placeholder with the real person's name, role and photo -->
+    <!-- <section class="ab-section ab-team" id="leadership">
+      <div class="ab-container">
+        <div class="ab-section-head">
+          <div class="ab-eyebrow">People Behind The Work</div>
+          <h2 class="ab-heading">Meet our <span>team & leadership.</span></h2>
+          <p class="ab-copy">A team committed to turning ideas into dependable digital solutions.</p>
+        </div>
+        <div class="ab-team-grid">
+         
+          <article class="ab-person">
+            <div class="ab-person-top"><div class="ab-avatar" aria-hidden="true"></div></div>
+            <div class="ab-person-body"><h3>Team Member 01</h3><p>Director</p><span class="ab-edit-note">Update profile</span></div>
+          </article>
+         
+          <article class="ab-person">
+            <div class="ab-person-top"><div class="ab-avatar" aria-hidden="true"></div></div>
+            <div class="ab-person-body"><h3>Team Member 02</h3><p>Director</p><span class="ab-edit-note">Update profile</span></div>
+          </article>
+          
+          <article class="ab-person">
+            <div class="ab-person-top"><div class="ab-avatar" aria-hidden="true"></div></div>
+            <div class="ab-person-body"><h3>Team Member 03</h3><p>Team Member</p><span class="ab-edit-note">Update profile</span></div>
+          </article>
+        
+          <article class="ab-person">
+            <div class="ab-person-top"><div class="ab-avatar" aria-hidden="true"></div></div>
+            <div class="ab-person-body"><h3>Team Member 04</h3><p>Team Member</p><span class="ab-edit-note">Update profile</span></div>
+          </article>
+         
+          <article class="ab-person">
+            <div class="ab-person-top"><div class="ab-avatar" aria-hidden="true"></div></div>
+            <div class="ab-person-body"><h3>Team Member 05</h3><p>Team Member</p><span class="ab-edit-note">Update profile</span></div>
+          </article>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- CTA -->
+    <section class="ab-cta-wrap">
+      <div class="ab-container">
+        <div class="ab-cta">
+          <div><h2>Have an idea? Let's build it together.</h2><p>Talk to our team about your next digital project.</p></div>
+          <a class="ab-cta-btn" href="contact.html">Let's Talk <span aria-hidden="true">&nbsp; →</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Keep your existing site footer -->
   <footer>
     <div class="footer-grid">
-      <div class="footer-brand"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"><p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p><div class="social-links" style="margin-top:20px;"><a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a></div></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
+      <div class="footer-brand">
+        <img src="image/logo/tttttttttnew.png" alt="Tixorion Logo">
+        <p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI &amp; ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@tixorion.in">hello@tixorion.in</a></li><li><a href="tel:+917880726119">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
     </div>
     <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
   </footer>
 
-  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }</script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      if (menu) menu.classList.toggle("open");
+    }
+  </script>
 </body>
 </html>
