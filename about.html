@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – Tixorion Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #about { background: var(--dark3); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-features { display: flex; flex-direction: column; gap: 28px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .why-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: linear-gradient(135deg, rgba(59,158,255,.2), rgba(124,58,237,.2)); border: 1px solid rgba(59,158,255,.25); }
+    .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .why-item p { color: var(--muted); font-size: .88rem; line-height: 1.7; }
+    .orbit-visual { position: relative; width: 320px; height: 320px; margin: 0 auto; }
+    .orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 0 40px rgba(59,158,255,.4); animation: orbit-pulse 3s ease-in-out infinite; }
+    .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(59,158,255,.2); transform: translate(-50%,-50%); }
+    .orbit-ring-1 { width: 160px; height: 160px; animation: spin 8s linear infinite; }
+    .orbit-ring-2 { width: 240px; height: 240px; animation: spin 14s linear infinite reverse; }
+    .orbit-ring-3 { width: 320px; height: 320px; animation: spin 20s linear infinite; }
+    .orbit-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); top: -5px; left: 50%; margin-left: -5px; box-shadow: 0 0 10px var(--blue); }
+    .orbit-dot-2 { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
+    .orbit-dot-3 { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+    #stats { background: var(--dark2); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 24px; text-align: center; transition: all .3s; }
+    .stat-card:hover { border-color: rgba(59,158,255,.3); transform: translateY(-4px); }
+    .stat-num { font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+    .stat-label { font-size: .85rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    #mission { background: var(--dark); }
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .mission-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
+    .mission-card h3 { font-family: 'Orbitron', monospace; font-size: 1.1rem; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
+    .mission-card p { color: var(--muted); line-height: 1.8; font-size: .95rem; }
+    @media (max-width: 900px) { .why-grid, .mission-grid { grid-template-columns: 1fr; } .orbit-visual { display: none; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="technologies.html">Technologies</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="section-label">Who We Are</div>
+    <h1>About <span>Tixorion Technologies</span></h1>
+    <p>A passionate technology company dedicated to building intelligent digital solutions that power the businesses of tomorrow.</p>
+  </div>
+
+  <section id="about">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">We Build Solutions<br>That <span>Actually Work</span></h2>
+        <p class="section-desc" style="margin-bottom: 36px;">At Tixorion, we combine deep technical expertise with a client-first approach to deliver software that creates real business value. Founded with a vision to democratize cutting-edge technology, we've grown into a full-service digital transformation partner.</p>
+        <div class="why-features">
+          <div class="why-item"><div class="why-icon">🏆</div><div><h4>Expert Engineering Team</h4><p>Certified engineers with 5–12 years of experience across diverse domains, delivering high-quality code and architecture.</p></div></div>
+          <div class="why-item"><div class="why-icon">⚡</div><div><h4>Agile & Fast Delivery</h4><p>Iterative development sprints with continuous delivery ensure faster time-to-market without sacrificing quality.</p></div></div>
+          <div class="why-item"><div class="why-icon">🛡️</div><div><h4>Security First Approach</h4><p>Every solution is built with security best practices embedded from the ground up, not bolted on later.</p></div></div>
+          <div class="why-item"><div class="why-icon">🤝</div><div><h4>Transparent Communication</h4><p>Real-time project tracking, weekly reporting, and dedicated account managers keep you in the loop always.</p></div></div>
+        </div>
+      </div>
+      <div class="orbit-visual">
+        <div class="orbit-center">💻</div>
+        <div class="orbit-ring orbit-ring-1"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring orbit-ring-2"><div class="orbit-dot orbit-dot-2"></div></div>
+        <div class="orbit-ring orbit-ring-3"><div class="orbit-dot orbit-dot-3"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats">
+    <div class="section-header">
+      <div class="section-label">Our Impact</div>
+      <h2 class="section-title">Numbers That <span>Speak</span></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat-card"><div class="stat-num">80+</div><div class="stat-label">Happy Clients</div></div>
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Guarantee</div></div>
+      <div class="stat-card"><div class="stat-num">11+</div><div class="stat-label">Team Members</div></div>
+      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
+    </div>
+  </section>
+
+  <section id="mission">
+    <div class="section-header">
+      <div class="section-label">Our Foundation</div>
+      <h2 class="section-title">Mission & <span>Vision</span></h2>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <h3>🎯 Our Mission</h3>
+        <p>To empower businesses of all sizes with cutting-edge technology solutions that drive growth, efficiency, and innovation. We are committed to delivering exceptional software that solves real-world problems and creates lasting value for our clients and their customers.</p>
+      </div>
+      <div class="mission-card">
+        <h3>🚀 Our Vision</h3>
+        <p>To be the most trusted technology partner for businesses navigating the digital age. We envision a world where intelligent technology is accessible to every business, enabling them to compete at the highest level and make a positive impact in their industries.</p>
+      </div>
+      <div class="mission-card">
+        <h3>💡 Our Values</h3>
+        <p>Innovation, integrity, and impact guide everything we do. We believe in honest partnerships, continuous learning, and building technology that stands the test of time. Our client's success is our success — and that drives every decision we make.</p>
+      </div>
+      <div class="mission-card">
+        <h3>🌍 Our Approach</h3>
+        <p>We take a holistic approach to every project — understanding your business goals, your users' needs, and the technical landscape before writing a single line of code. This ensures every solution we deliver is not just functional, but truly transformative.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, rgba(59,158,255,.12), rgba(124,58,237,.15)); border-top: 1px solid rgba(59,158,255,.15); border-bottom: 1px solid rgba(59,158,255,.15); text-align:center; padding: 70px 5%;">
+    <h2 style="font-family:'Orbitron',monospace; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:14px;">Meet the <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Team</span></h2>
+    <p style="color:var(--muted); margin-bottom:32px;">The brilliant minds behind Tixorion Technologies.</p>
+    <a href="team.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Meet Our Team →</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="image/logo/tttttttttnew.png" alt="Tixorion Logo"><p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p><div class="social-links" style="margin-top:20px;"><a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li><li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li><li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p><p>Powering Digital Intelligence</p></div>
+  </footer>
+
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }</script>
+</body>
+</html>

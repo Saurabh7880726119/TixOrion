@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tixorion Technologies Pvt. Ltd. – Powering Digital Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* HERO */
+    #hero {
+      position: relative; min-height: 100vh; display: flex;
+      align-items: center; justify-content: center; text-align: center;
+      overflow: hidden; padding: 100px 5% 60px;
+    }
+    #particle-canvas { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59, 158, 255, .12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, .1) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(59, 158, 255, .1); border: 1px solid rgba(59, 158, 255, .3);
+      padding: 8px 18px; border-radius: 50px; font-size: .8rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue);
+      margin-bottom: 28px; animation: fadeDown .8s ease both;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
+    .hero-title { font-family: 'Orbitron', monospace; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; animation: fadeUp .9s ease .2s both; }
+    .hero-title span { background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-tagline { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--muted); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; animation: fadeUp .9s ease .3s both; }
+    .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 640px; margin: 0 auto 40px; animation: fadeUp .9s ease .4s both; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp .9s ease .5s both; }
+    .hero-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 64px; animation: fadeUp .9s ease .7s both; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { font-size: .8rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+    /* SERVICES PREVIEW */
+   #services-preview {
+    background: #fff;
+}
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .service-card { background: rgba(59, 158, 255, .07); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; transition: all .4s; position: relative; overflow: hidden; }
+    .service-card::before { pointer-events: none; content: ''; position: absolute; inset: 0; opacity: 0; background: linear-gradient(135deg, rgba(59, 158, 255, .07), rgba(124, 58, 237, .07)); transition: opacity .4s; }
+    .service-card:hover { border-color: rgba(59, 158, 255, .3); transform: translateY(-6px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { color:#3b9eff; width: 56px; height: 56px; border-radius: 14px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; background: linear-gradient(135deg, rgba(59, 158, 255, .15), rgba(124, 58, 237, .15)); border: 1px solid rgba(59, 158, 255, .2); }
+    .service-card h3 {  font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color:#3b9eff; }
+    .service-card p { color: #313c4a; font-size: .9rem; line-height: 1.7; }
+    .view-all-wrap { text-align: center; margin-top: 40px; }
+    
+
+    /* WHY US PREVIEW */
+    #why-preview { background: var(--dark3); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-features { display: flex; flex-direction: column; gap: 28px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .why-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: linear-gradient(135deg, rgba(59, 158, 255, .2), rgba(124, 58, 237, .2)); border: 1px solid rgba(59, 158, 255, .25); }
+    .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .why-item p { color: var(--muted); font-size: .88rem; line-height: 1.7; }
+    .orbit-visual { position: relative; width: 320px; height: 320px; margin: 0 auto; }
+    .orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 0 40px rgba(59, 158, 255, .4); animation: orbit-pulse 3s ease-in-out infinite; }
+    .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(59, 158, 255, .2); transform: translate(-50%, -50%); }
+    .orbit-ring-1 { width: 160px; height: 160px; animation: spin 8s linear infinite; }
+    .orbit-ring-2 { width: 240px; height: 240px; animation: spin 14s linear infinite reverse; }
+    .orbit-ring-3 { width: 320px; height: 320px; animation: spin 20s linear infinite; }
+    .orbit-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); top: -5px; left: 50%; margin-left: -5px; box-shadow: 0 0 10px var(--blue); }
+    .orbit-dot-2 { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
+    .orbit-dot-3 { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+    
+
+    /* TEAM PREVIEW */
+    #team-preview {  background: white; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+    .team-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .4s; text-align: center; border-color: rgba(59, 158, 255, .4); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 158, 255, .12);}
+    .team-card:hover { border-color: rgba(59, 158, 255, .4); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 158, 255, .12); }
+    .team-img-wrap { position: relative; overflow: hidden; height: 220px; }
+    .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; filter: grayscale(20%); }
+    .team-card:hover .team-img-wrap img { transform: scale(1.07); filter: grayscale(0%); }
+    .team-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 7, 15, .85) 0%, transparent 55%); }
+    .team-social { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; opacity: 0; transition: opacity .3s; }
+    .team-card:hover .team-social { opacity: 1; }
+    .team-social a { width: 30px; height: 30px; border-radius: 6px; background: rgba(59, 158, 255, .2); border: 1px solid rgba(59, 158, 255, .4); display: flex; align-items: center; justify-content: center; color: var(--blue); text-decoration: none; font-size: .75rem; transition: background .2s; }
+    .team-social a:hover { background: rgba(59, 158, 255, .4); }
+    .team-info { padding: 18px 16px 22px; }
+    .team-name { font-weight: 700; font-size: 1rem; margin-bottom: 5px; color: black; }
+    .team-designation { font-size: .8rem; color: var(--blue); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 8px; }
+    .team-desc { font-size: .82rem; color: black; line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--dark3); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .testi-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .3s; }
+    .testi-card:hover { border-color: rgba(59, 158, 255, .25); transform: translateY(-4px); }
+    .stars { color: #f59e0b; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-text { color: var(--muted); font-size: .93rem; line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+    .testi-name { font-weight: 600; font-size: .95rem; }
+    .testi-role { color: var(--muted); font-size: .8rem; }
+
+    /* CTA STRIP */
+    #cta-strip { background: linear-gradient(135deg, rgba(59, 158, 255, .12), rgba(124, 58, 237, .15)); border-top: 1px solid rgba(59, 158, 255, .15); border-bottom: 1px solid rgba(59, 158, 255, .15); padding: 70px 5%; text-align: center; }
+    #cta-strip h2 { font-family: 'Orbitron', monospace; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 14px; }
+    #cta-strip p { color: var(--muted); margin-bottom: 32px; font-size: 1rem; }
+
+    @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } .orbit-visual { display: none; } }
+    @media (max-width: 600px) { .hero-stats { gap: 24px; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo/tttttttttnew.png" alt="Tixorion Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="technologies.html">Technologies</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="technologies.html" onclick="toggleMenu()">Technologies</a>
+    <a href="process.html" onclick="toggleMenu()">Process</a>
+    <a href="team.html" onclick="toggleMenu()">Team</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="nav-cta" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> Next-Gen IT Solutions</div>
+      <h1 class="hero-title">Building the Future<br>with <span>Digital Intelligence</span></h1>
+      <p class="hero-tagline">Powering Digital Intelligence</p>
+      <p class="hero-desc">Tixorion Technologies delivers cutting-edge software development, AI solutions, and cloud services that transform businesses and accelerate growth in the digital era.</p>
+      <div class="hero-btns">
+        <a href="services.html" class="btn-primary">Explore Services</a>
+        <a href="contact.html" class="btn-outline">Start a Project →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
+        <div class="stat"><div class="stat-num">80+</div><div class="stat-label">Happy Clients</div></div>
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Guarantee</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <!-- Font Awesome CDN - <head> me add karo agar already nahi hai -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<section id="services-preview">
+  <div class="section-header">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title"><span>Our Core Services</span></h2>
+    <p class="section-desc" style="color: black;">End-to-end technology solutions designed to accelerate your business growth and digital transformation journey.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+     <a href="#" style="text-decoration: none;"><h3>Customized Software Development</h3></a> 
+      <p>Tailor-made software solutions built around your unique business processes, ensuring scalability, security, and seamless integration.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+      <a href="#" style="text-decoration: none;"><h3>Web Development</h3></a>
+      <p>Custom, responsive websites and powerful web applications built with modern frameworks like React, Vue, and Node.js.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+     <a href="#" style="text-decoration: none;"><h3>Mobile App Development</h3></a> 
+      <p>Native and cross-platform mobile apps for iOS and Android using Flutter and React Native.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
+     <a href="#" style="text-decoration: none;"><h3>Digital Marketing</h3></a> 
+      <p>Result-driven SEO, social media, and paid ad campaigns that boost your brand visibility and generate quality leads.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-sitemap"></i></div>
+     <a href="#" style="text-decoration: none;"> <h3>Customized ERP Solution</h3></a>
+      <p>End-to-end ERP systems designed to streamline operations, automate workflows, and improve business efficiency.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+     <a href="#" style="text-decoration: none;"> <h3>UI/UX Design</h3></a>
+      <p>Human-centered design research, wireframing, prototyping, and visual design.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+    <a href="#" style="text-decoration: none;"><h3>Branding</h3></a>  
+      <p>Distinctive brand identities including logo design, brand guidelines, and visual language that make you stand out.</p>
+    </div>
+  </div>
+</section>
+
+ <section id="why-preview" style="background-color: rgb(255, 255, 255);">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">TECHNOLOGY</div>
+        <h2 class="section-title"> <span>Technology we use at work</span></h2>
+        <p class="section-desc" style="margin-bottom: 36px; color: #606b7a;">We leverage the latest technologies and frameworks to build fast, secure, and scalable digital solutions that drive real business results.</p>
+       
+      </div>
+      <div class="orbit-visual">
+        <div class="orbit-center">
+          <img src="image/technology.png">
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHY US PREVIEW -->
+  <section id="why-preview">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title"> <span>We Build Solutions That Actually Work</span></h2>
+        <p class="section-desc" style="margin-bottom: 36px;">At Tixorion, we combine deep technical expertise with a client-first approach to deliver software that creates real business value.</p>
+       <div class="why-features">
+          <div class="why-item">
+            <div class="why-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div><h4>Expert Engineering Team</h4><p>Certified engineers with 5–12 years of experience across diverse domains.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div><h4>Agile & Fast Delivery</h4><p>Iterative development sprints ensuring faster time-to-market without sacrificing quality.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><h4>Security First Approach</h4><p>Every solution is built with security best practices embedded from the ground up.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+            <div><h4>Transparent Communication</h4><p>Real-time project tracking, weekly reporting, and dedicated account managers.</p></div>
+          </div>
+        </div>
+       
+      </div>
+      <div class="orbit-visual">
+        <div class="orbit-center"> <img src="image/whychooseus.png" alt="Technology"></div>
+       
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PREVIEW -->
+  <section id="team-preview">
+    <div class="section-header">
+      <div class="section-label">The People Behind</div>
+      <h2 class="section-title"><span>Meet Our Expert Team</span></h2>
+      <p class="section-desc" style="color: black;">A passionate group of engineers, designers, and strategists working together to deliver extraordinary digital solutions.</p>
+    </div>
+   <div class="team-grid">
+
+
+       <div class="team-card">
+    <div class="team-img-wrap">
+      <!-- <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Neha Shakya"> -->
+        <img src="image/nnnnnnnn.jpeg" alt="Neha Shakya">
+      <div class="team-img-overlay"></div>
+      <div class="team-social">
+        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+      </div>
+    </div>
+    <div class="team-info">
+      <div class="team-name">Neha Shakya</div>
+      <div class="team-designation">Co-Founder & Chief Technology Officer (CTO)</div>
+      <div class="team-desc">Technology strategist leading scalable systems, AI platforms and advanced product development.</div>
+    </div>
+  </div>
+
+
+     <div class="team-card">
+    <div class="team-img-wrap">
+      <img src="image/ooooo.jpeg" alt="Saurabh Kushwaha">
+      <div class="team-img-overlay"></div>
+      <div class="team-social">
+        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+      </div>
+    </div>
+    <div class="team-info">
+      <div class="team-name">Saurabh Kushwaha</div>
+      <!-- <div class="team-designation">Co-Founder & Chief Executive Officer (CEO)</div> -->
+        <div class="team-designation">Dot Net Developer</div>
+      <div class="team-desc">Visionary leader driving company strategy, innovation and global digital transformation initiatives.</div>
+    </div>
+  </div>
+
+
+        <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/rajkumarimage.png" alt="Vikram Nair">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Rajkumar</div>
+          <div class="team-designation">Mobile Developer</div>
+          <div class="team-desc">Flutter & React Native specialist delivering seamless cross-platform mobile apps.</div>
+        </div>
+      </div>
+
+
+             <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/pankajimage.jpeg" alt="Karan Singh">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Pankaj</div>
+          <div class="team-designation">Software Engineer</div>
+          <div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.
+          </div>
+        </div>
+      </div>
+
+
+         <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/akashimage.png" alt="Karan Singh">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Akash</div>
+          <div class="team-designation">AI/ML Engineer</div>
+          <div class="team-desc">Deep learning specialist building intelligent systems with TensorFlow and PyTorch.
+          </div>
+        </div>
+      </div>
+
+        
+       <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/shaliniimage.png" alt="Sneha Gupta">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Shalini</div>
+          <div class="team-designation">Head of Design</div>
+          <div class="team-desc">Award-winning UI/UX designer crafting intuitive, user-centered digital experiences.
+          </div>
+        </div>
+      </div>
+
+         <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/prashantimage.png" alt="Riya Joshi">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Prashant</div>
+          <div class="team-designation">Dot Net Developer</div>
+          <div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div>
+        </div>
+      </div>
+
+
+
+
+     <div class="team-card">
+    <div class="team-img-wrap">
+      <img src="image/gauravnewimage.png" alt="Gaurav Kushwaha">
+      <div class="team-img-overlay"></div>
+      <div class="team-social">
+        <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+      </div>
+    </div>
+    <div class="team-info">
+      <div class="team-name">Gaurav Kushwaha</div>
+      <div class="team-designation">Digital Marketing Manager</div>
+      <div class="team-desc">Specialist in SEO, social media marketing and digital growth strategies helping brands scale online.</div>
+    </div>
+  </div>
+
+
+
+     
+ <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/kalpeshimage.png" alt="Ananya Mishra">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Kalpesh</div>
+          <div class="team-designation">DevOps Engineer</div>
+          <div class="team-desc">Cloud infrastructure expert managing CI/CD pipelines on AWS, Azure & GCP.</div>
+        </div>
+      </div>
+
+      
+
+     
+
+   
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="image/shivamimage.png" alt="Riya Joshi">
+          <div class="team-img-overlay"></div>
+          <div class="team-social">
+            <a href="#">in</a><a href="#">𝕏</a><a href="#">@</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Shivam Prabhakar</div>
+          <div class="team-designation">Project Manager</div>
+          <div class="team-desc">PMP-certified manager ensuring on-time delivery with agile methodology expertise.</div>
+        </div>
+      </div>
+
+     
+
+    </div>
+     </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-header">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-title">What Our <span>Clients Say</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Tixorion delivered our e-commerce platform 2 weeks ahead of schedule. The quality of code and attention to detail was exceptional."</p><div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rahul Sharma</div><div class="testi-role">CEO, RetailPlus India</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"The AI-powered analytics dashboard they built reduced our reporting time by 80%. The team was responsive, professional, and incredibly skilled."</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya Mehta</div><div class="testi-role">CTO, FinTechWave</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Outstanding work on our mobile app! Over 50,000 downloads in the first month. Tixorion's expertise in Flutter and UX design made all the difference."</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Arjun Patel</div><div class="testi-role">Founder, HealthTrack App</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section id="cta-strip">
+    <h2>Ready to Build Something <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Extraordinary?</span></h2>
+    <p>Let's discuss your project and turn your vision into a powerful digital reality.</p>
+    <a href="contact.html" class="btn-primary" style="font-size:1.05rem; padding: 16px 40px;">Start Your Project Today →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="image/logo/tttttttttnew.png" alt="Tixorion Logo">
+        <p>Tixorion Technologies Pvt. Ltd. — Building intelligent digital solutions that power the businesses of tomorrow.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-link">in</a><a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">gh</a><a href="#" class="social-link">fb</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="services.html">Web Development</a></li><li><a href="services.html">Mobile Apps</a></li>
+        <li><a href="services.html">AI & ML</a></li><li><a href="services.html">Cloud Solutions</a></li>
+        <li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">UI/UX Design</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li>
+        <li><a href="process.html">Our Process</a></li><li><a href="technologies.html">Technologies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="#">hello@tixorion.in</a></li><li><a href="#">+91 78807 26119</a></li>
+        <li><a href="#">Sector 15, Noida, UP</a></li><li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Tixorion Technologies Pvt. Ltd. All rights reserved.</p>
+      <p>Powering Digital Intelligence</p>
+    </div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    for (let i = 0; i < 80; i++) {
+      particles.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3, r: Math.random() * 1.5 + .5, o: Math.random() * .5 + .1 });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(59,158,255,${p.o})`; ctx.fill();
+      });
+      particles.forEach((p, i) => {
+        for (let j = i + 1; j < particles.length; j++) {
+          const d = Math.hypot(p.x - particles[j].x, p.y - particles[j].y);
+          if (d < 100) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(59,158,255,${.08 * (1 - d / 100)})`; ctx.stroke(); }
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  </script>
+</body>
+</html>
