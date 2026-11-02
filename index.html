@@ -889,14 +889,13 @@
             <button type="button" onclick="closeQuoteModal()">×</button>
         </div>
 
-        <form action="https://formsubmit.co/nehashaky36@gmail.com" method="POST">
+      <form id="quoteForm" action="https://formsubmit.co/ajax/nehashaky36@gmail.com" method="POST">
 
     <input type="hidden" name="_subject" value="New Enquiry - Tixorion Website">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://YOUR-WEBSITE.com/thankyou.html">
 
-    <!-- Honeypot (spam se bachne ke liye) -->
+    <!-- Honeypot -->
     <input type="text" name="_honey" style="display:none">
 
     <div class="demo-field">
@@ -936,8 +935,16 @@
         </div>
     </div>
 
-    <button type="submit" class="demo-submit">Submit</button>
+    <button type="submit" class="demo-submit" id="quoteSubmitBtn">Submit</button>
 </form>
+
+<!-- Success message (pehle hidden rahega) -->
+<div id="quoteSuccess" style="display:none; text-align:center; padding:30px 10px;">
+    <div style="font-size:60px;">🎉</div>
+    <h2 style="color:#1260ae; margin:10px 0;">Thank You!</h2>
+    <p style="color:#555; font-size:14px;">Aapki enquiry mil gayi hai. Hamari team 24 ghante me aapse contact karegi.</p>
+    <button type="button" class="demo-submit" onclick="closeQuoteModal()" style="margin-top:15px;">Close</button>
+</div>
 
     </div>
 </div>
@@ -1071,7 +1078,55 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+const quoteForm = document.getElementById('quoteForm');
+const quoteSuccess = document.getElementById('quoteSuccess');
+const quoteBtn = document.getElementById('quoteSubmitBtn');
 
+quoteForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Button disable, taaki double click na ho
+    quoteBtn.disabled = true;
+    quoteBtn.textContent = 'Sending...';
+
+    // Turant success message dikhao (fast feel ke liye)
+    quoteForm.style.display = 'none';
+    quoteSuccess.style.display = 'block';
+
+    // Background me data bhejo
+    fetch(quoteForm.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(quoteForm)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('Form sent:', data);
+    })
+    .catch(err => {
+        console.error('Error:', err);
+        // Agar fail ho jaye to form wapas dikhao
+        quoteForm.style.display = 'block';
+        quoteSuccess.style.display = 'none';
+        quoteBtn.disabled = false;
+        quoteBtn.textContent = 'Submit';
+        alert('Kuch gadbad ho gayi, kripya dobara try karein.');
+    });
+});
+
+// Modal band hone par form reset kar do
+function closeQuoteModal() {
+    document.getElementById('quoteModal').classList.remove('active');
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+        quoteForm.reset();
+        quoteForm.style.display = 'block';
+        quoteSuccess.style.display = 'none';
+        quoteBtn.disabled = false;
+        quoteBtn.textContent = 'Submit';
+    }, 300);
+}
   </script>
 </body>
 </html>
