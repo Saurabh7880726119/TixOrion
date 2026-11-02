@@ -234,7 +234,89 @@
         margin-right: 5px;
     }
 }
+/* SUCCESS MESSAGE */
+.qs-box {
+    display: none;
+    text-align: center;
+    padding: 25px 10px 10px;
+}
 
+.qs-box.show {
+    display: block;
+    animation: qsFade .4s ease;
+}
+
+@keyframes qsFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.qs-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #e8f1fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qs-icon svg {
+    width: 60px;
+    height: 60px;
+}
+
+.qs-circle {
+    stroke: #1260ae;
+    stroke-width: 2.5;
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+    animation: qsDraw .6s ease forwards;
+}
+
+.qs-check {
+    stroke: #1260ae;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: qsDraw .4s ease .5s forwards;
+}
+
+@keyframes qsDraw {
+    to { stroke-dashoffset: 0; }
+}
+
+.qs-box h2 {
+    font-size: 26px;
+    color: #1260ae;
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+.qs-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0 auto 20px;
+    max-width: 300px;
+}
+
+.qs-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #f4f8fd;
+    border: 1px dashed #b9d3ee;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 22px;
+    font-size: 12.5px;
+    color: #1260ae;
+}
 
   </style>
 </head>
@@ -1103,9 +1185,9 @@ quoteForm.addEventListener('submit', function (e) {
     quoteBtn.disabled = true;
     quoteBtn.textContent = 'Sending...';
 
-    // Turant success message dikhao (fast feel ke liye)
-    quoteForm.style.display = 'none';
-    quoteSuccess.style.display = 'block';
+  // Ab:
+quoteForm.style.display = 'none';
+quoteSuccess.classList.add('show');
 
     // Background me data bhejo
     fetch(quoteForm.action, {
